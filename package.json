@@ -1,0 +1,14 @@
+{
+  "name": "typingtrain",
+  "description": "Typing training",
+  "version": "1.0.0",
+  "engines": {
+    "node": ">= 0.4.x"
+  },
+  "devDependencies": {
+    "coffee-script": "latest",
+    "express": "^4.17.2",
+    "stitch": "^0.3.3",
+    "uglify-js": "latest"
+  }
+}
