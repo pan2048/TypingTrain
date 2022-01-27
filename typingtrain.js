@@ -737,7 +737,13 @@ TextInput.prototype.testDone = function(e) {
 
 }, "lib/Cookie": function(exports, require, module) {function getCookie(cname) {
     let name = cname + "=";
-    let decodedCookie = decodeURIComponent(document.cookie);
+    let decodedCookie = "";
+    try {
+        decodedCookie = decodeURIComponent(document.cookie);
+    }
+    catch(err) {
+        decodeCookie = "";
+    }
     let ca = decodedCookie.split(';');
     for(let i = 0; i <ca.length; i++) {
         let c = ca[i];
@@ -755,7 +761,7 @@ function setCookie(cname, cvalue) {
     const d = new Date();
     d.setTime(d.getTime() + (365*24*60*60*1000));
     let expires = "expires="+ d.toUTCString();
-    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    document.cookie = encodeURIComponent(cname + "=" + cvalue + ";" + expires + ";path=/");
 }
   
 
