@@ -39,9 +39,10 @@ Statistics.prototype.Done = function() {
     }
     total++;
   }
+  this.inputs = [];
   var percent = right/total;
   var cpm = (total - 1) * 1000 * 60 / time;
-  this.writeHistory(Array.from(wrongs));
+  this.writeHistory(wrongs);
   return this.toString(percent, cpm, wrongs);
 }
 
@@ -71,7 +72,10 @@ Statistics.prototype.getHistory = function() {
 
 Statistics.prototype.writeHistory = function(news) {
   var arr = this.getHistory();
-  arr = arr.concat(news).slice(-20);
+  for(let dk in news) {
+      arr.push(dk);
+  }  
+  arr = arr.slice(-20);
   var json_str = JSON.stringify(arr);
   Cookie.setCookie('editor_history', json_str);
 }
