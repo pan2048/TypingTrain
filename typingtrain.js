@@ -946,7 +946,6 @@ Document.prototype.genText = function() {
     if( i!= 2)
       text += '\n';
   }
-  text = "aaa";
   return text;
 }
 
