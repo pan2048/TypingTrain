@@ -101,11 +101,12 @@ Editor.prototype.setMode = function(mode) {
  Editor.prototype._createWrapper = function() {
   this.wrapper = document.createElement('div');
   this.wrapper.className = this.className;
-  this.wrapper.style.position = 'absolute';
   this.wrapper.style.backgroundColor = this.options.backgroundColor;
   this.wrapper.style.border = this.options.padding + 'px solid ' + this.options.backgroundColor;
   this.wrapper.style.overflow = 'hidden';
   this.wrapper.tabIndex = 0; // tabindex is necessary to get focus
+  this.wrapper.width = this.options.width;
+  this.wrapper.height = this.options.height + 100;
   this.wrapper.addEventListener('focus', this.focus.bind(this), false);
 };
 
@@ -120,15 +121,16 @@ Editor.prototype.setMode = function(mode) {
   document.addEventListener('DOMContentLoaded', function(){
     var Editor = require('Editor'),
       editor = new Editor();
+    
     var LocalFile = require('gui/LocalFile'),
       localFile = new LocalFile(editor);
     var EditorMode = require('gui/EditorMode'),
       editorMode = new EditorMode(editor);      
+    document.body.appendChild(editor.wrapper);   
     var MessageBox = require('gui/MessageBox'),
       messageBox = new MessageBox();
     
     editor.messageBox = messageBox;  
-    document.body.appendChild(editor.wrapper); 
 
     editor.focus();
   }, false);
@@ -164,11 +166,11 @@ Canvas.prototype.selectionChange = function() {
  */
 Canvas.prototype._createCanvas = function() {
   this.canvas = document.createElement('canvas');
+  this.editor.wrapper.appendChild(this.canvas);
   this.canvas.style.display = 'block';
   this.context = this.canvas.getContext('2d');
   this.resize(this.editor.options.width, this.editor.options.height);
   this.render();
-  this.editor.wrapper.appendChild(this.canvas);
 };
 
 /**
@@ -351,15 +353,15 @@ Canvas.prototype.fillText = function (line, baseX, y, offset = 0) {
 };
 
 }, "gui/Cursor": function(exports, require, module) {var Cursor = function(editor, color, height) {
+  this.editor = editor;
   color = color || (color = '#000');
 
   this.el = document.createElement('div');
+  editor.wrapper.appendChild(this.el);
   this.el.style.position = 'absolute';
   this.el.style.width = '2px';
   this.el.style.height = height + 'px';
   this.el.style.backgroundColor = color;
-
-  editor.wrapper.appendChild(this.el);
 };
 
 /**
@@ -384,8 +386,8 @@ Cursor.prototype.blink = function() {
  * Updates cursor so it matches current position
  */
 Cursor.prototype.updateCursor = function(offsetX, offsetY) {
-  this.el.style.left = offsetX + 'px';
-  this.el.style.top = offsetY + 'px';
+  this.el.style.left = this.el.parentNode.getBoundingClientRect().left + this.editor.options.padding + offsetX + 'px';
+  this.el.style.top = this.el.parentNode.getBoundingClientRect().top + this.editor.options.padding + offsetY + 'px';
 
   // This helps to see moving cursor when it is always in blink on
   // state on a new position. Try to move cursror in any editor and you
@@ -677,12 +679,12 @@ TextInput.prototype.testDone = function(e) {
   var pos = this.editor._selection.getPosition();
   var realValue = this.editor._document.charAt(pos[0],pos[1]);
   if (!realValue) {
-    this.editor._document.setText(this.editor._document.genText());
-    this.editor._selection.setPosition(0, 0);
+    this.editor.canvas.render();
     var percent = 0,
       wrongs = [];
-    [percent, wrongs] = this.statistics.Done();
-    alert("You have a right score of " + Math.round(percent*1000)/10 + "%, and wrong ones are [" + wrongs + "]");
+    alert(this.statistics.Done());
+    this.editor._document.setText(this.editor._document.genText());
+    this.editor._selection.setPosition(0, 0);    
   }
 }
 
@@ -739,10 +741,9 @@ TextInput.prototype.testDone = function(e) {
     let name = cname + "=";
     let decodedCookie = "";
     try {
-        decodedCookie = decodeURIComponent(document.cookie);
-    }
-    catch(err) {
-        decodeCookie = "";
+        let decodedCookie = decodeURIComponent(document.cookie);
+    } catch (err) {
+        decodedCookie = "";
     }
     let ca = decodedCookie.split(';');
     for(let i = 0; i <ca.length; i++) {
@@ -937,13 +938,15 @@ Document.prototype.genText = function() {
     arr = Array.from('!@#$%^&*()_+~`1234567890-={}[]:"|;\'\\<>?|,./\\');
   arr = arr.concat(this.statistics.getHistory());
 
-  for (var i = 0; i < 6; i++) {
-    characterCount = Math.floor(Math.random() * 3) + 9;
+  for (var i = 0; i < 3; i++) {
+    characterCount = Math.floor(Math.random() * 3) + 6;
     for (var j = 0; j < characterCount; j++) {
       text += arr[Math.floor(Math.random() * arr.length)];
     };
-    text += '\n';
+    if( i!= 2)
+      text += '\n';
   }
+  text = "aaa";
   return text;
 }
 
@@ -1442,26 +1445,54 @@ module.exports = Statistics;
 Statistics.prototype.InputOne = function(inputValue, realValue) {
   var input = {
     "input" : inputValue,
-    "real": realValue
+    "real": realValue,
+    "time": new Date().getTime()
   }
   this.inputs.push(input)
 }
 
 Statistics.prototype.Done = function() {
   var total = 0, 
-    right = 0;
-  var wrongs = new Set();
+    right = 0, 
+    time = 0;
+  var wrongs = new Map();
   for(var i=0; i<this.inputs.length; i++) {
     if(this.inputs[i].input == this.inputs[i].real) {
       right++;
     } else {
-      wrongs.add(this.inputs[i].real);
+      if(wrongs[this.inputs[i].real] == undefined) { 
+        wrongs[this.inputs[i].real] = new Set();
+      }
+      wrongs[this.inputs[i].real].add(this.inputs[i].input);
+    }
+    if(i != 0) {
+      let timeDiff = this.inputs[i].time - this.inputs[i-1].time;
+      if(timeDiff > 4000) // to check if leaving
+        timeDiff = 4000;
+      time += timeDiff;
     }
     total++;
   }
   var percent = right/total;
+  var cpm = (total - 1) * 1000 * 60 / time;
   this.writeHistory(Array.from(wrongs));
-  return [percent, Array.from(wrongs)];
+  return this.toString(percent, cpm, wrongs);
+}
+
+Statistics.prototype.toString = function(percent, cpm, wrongs) {
+  let str = "You score is " + Math.round(percent*1000)/10 + "%.\n";
+  str += "CPM is " + Math.round(cpm*100)/100 + ".\n";
+  if(Object.keys(wrongs).length  > 0) {
+    str += "Below are typos,\n";
+    for(let dk in wrongs) {
+      str += "  '" + dk + "' => ";
+      for(let sv of wrongs[dk]) {
+        str += "'" + sv + "'; ";
+      } 
+      str += "\n";
+    }
+  }
+  return str;
 }
 
 Statistics.prototype.getHistory = function() {

@@ -16,12 +16,13 @@ Document.prototype.genText = function() {
     arr = Array.from('!@#$%^&*()_+~`1234567890-={}[]:"|;\'\\<>?|,./\\');
   arr = arr.concat(this.statistics.getHistory());
 
-  for (var i = 0; i < 6; i++) {
-    characterCount = Math.floor(Math.random() * 3) + 9;
+  for (var i = 0; i < 3; i++) {
+    characterCount = Math.floor(Math.random() * 3) + 6;
     for (var j = 0; j < characterCount; j++) {
       text += arr[Math.floor(Math.random() * arr.length)];
     };
-    text += '\n';
+    if( i!= 2)
+      text += '\n';
   }
   return text;
 }

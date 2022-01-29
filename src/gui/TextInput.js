@@ -162,12 +162,12 @@ TextInput.prototype.testDone = function(e) {
   var pos = this.editor._selection.getPosition();
   var realValue = this.editor._document.charAt(pos[0],pos[1]);
   if (!realValue) {
-    this.editor._document.setText(this.editor._document.genText());
-    this.editor._selection.setPosition(0, 0);
+    this.editor.canvas.render();
     var percent = 0,
       wrongs = [];
-    [percent, wrongs] = this.statistics.Done();
-    alert("You have a right score of " + Math.round(percent*1000)/10 + "%, and wrong ones are [" + wrongs + "]");
+    alert(this.statistics.Done());
+    this.editor._document.setText(this.editor._document.genText());
+    this.editor._selection.setPosition(0, 0);    
   }
 }
 

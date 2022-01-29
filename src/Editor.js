@@ -51,11 +51,12 @@ Editor.prototype.setMode = function(mode) {
  Editor.prototype._createWrapper = function() {
   this.wrapper = document.createElement('div');
   this.wrapper.className = this.className;
-  this.wrapper.style.position = 'absolute';
   this.wrapper.style.backgroundColor = this.options.backgroundColor;
   this.wrapper.style.border = this.options.padding + 'px solid ' + this.options.backgroundColor;
   this.wrapper.style.overflow = 'hidden';
   this.wrapper.tabIndex = 0; // tabindex is necessary to get focus
+  this.wrapper.width = this.options.width;
+  this.wrapper.height = this.options.height + 100;
   this.wrapper.addEventListener('focus', this.focus.bind(this), false);
 };
 

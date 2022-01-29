@@ -1,13 +1,13 @@
 var Cursor = function(editor, color, height) {
+  this.editor = editor;
   color = color || (color = '#000');
 
   this.el = document.createElement('div');
+  editor.wrapper.appendChild(this.el);
   this.el.style.position = 'absolute';
   this.el.style.width = '2px';
   this.el.style.height = height + 'px';
   this.el.style.backgroundColor = color;
-
-  editor.wrapper.appendChild(this.el);
 };
 
 /**
@@ -32,8 +32,8 @@ Cursor.prototype.blink = function() {
  * Updates cursor so it matches current position
  */
 Cursor.prototype.updateCursor = function(offsetX, offsetY) {
-  this.el.style.left = offsetX + 'px';
-  this.el.style.top = offsetY + 'px';
+  this.el.style.left = this.el.parentNode.getBoundingClientRect().left + this.editor.options.padding + offsetX + 'px';
+  this.el.style.top = this.el.parentNode.getBoundingClientRect().top + this.editor.options.padding + offsetY + 'px';
 
   // This helps to see moving cursor when it is always in blink on
   // state on a new position. Try to move cursror in any editor and you

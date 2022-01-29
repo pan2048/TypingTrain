@@ -28,11 +28,11 @@ Canvas.prototype.selectionChange = function() {
  */
 Canvas.prototype._createCanvas = function() {
   this.canvas = document.createElement('canvas');
+  this.editor.wrapper.appendChild(this.canvas);
   this.canvas.style.display = 'block';
   this.context = this.canvas.getContext('2d');
   this.resize(this.editor.options.width, this.editor.options.height);
   this.render();
-  this.editor.wrapper.appendChild(this.canvas);
 };
 
 /**
