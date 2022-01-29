@@ -14,12 +14,24 @@ Document.prototype.genText = function() {
   var text = '',
     characterCount = 0,
     arr = Array.from('!@#$%^&*()_+~`1234567890-={}[]:"|;\'\\<>?|,./\\');
-  arr = arr.concat(this.statistics.getHistory());
+  var atoz = [...Array(26)].map((_, i) => String.fromCharCode(i + "a".charCodeAt(0))); 
+  var AtoZ = [...Array(26)].map((_, i) => String.fromCharCode(i + "A".charCodeAt(0))); 
+
+  var show = [];
+  for(var i = 0; i < 2; i++) {
+    show.push(atoz[Math.floor(Math.random() * atoz.length)]);
+    show.push(AtoZ[Math.floor(Math.random() * AtoZ.length)]);
+  }
+  for(var i = 0; i < 6; i++) {
+    show.push(arr[Math.floor(Math.random() * arr.length)]);
+  }  
+
+  show = show.concat(this.statistics.getHistory());
 
   for (var i = 0; i < 3; i++) {
     characterCount = Math.floor(Math.random() * 3) + 6;
     for (var j = 0; j < characterCount; j++) {
-      text += arr[Math.floor(Math.random() * arr.length)];
+      text += show[Math.floor(Math.random() * show.length)];
     };
     if( i!= 2)
       text += '\n';

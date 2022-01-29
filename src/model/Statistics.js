@@ -66,7 +66,11 @@ Statistics.prototype.getHistory = function() {
   var json_str = Cookie.getCookie('editor_history');
   var arr = [];
   if(json_str) 
-    arr = JSON.parse(json_str); 
+    try {
+      arr = JSON.parse(json_str); 
+    } catch(e) {
+      arr = []
+    }
   return arr;
 }
 

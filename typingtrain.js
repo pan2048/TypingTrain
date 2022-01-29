@@ -739,30 +739,24 @@ TextInput.prototype.testDone = function(e) {
 
 }, "lib/Cookie": function(exports, require, module) {function getCookie(cname) {
     let name = cname + "=";
-    let decodedCookie = "";
-    try {
-        let decodedCookie = decodeURIComponent(document.cookie);
-    } catch (err) {
-        decodedCookie = "";
-    }
-    let ca = decodedCookie.split(';');
-    for(let i = 0; i <ca.length; i++) {
-        let c = ca[i];
-        while (c.charAt(0) == ' ') {
+    let ca = document.cookie.split(';');
+    for(let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == ' ') {
         c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
+      }
+      if (c.indexOf(name) == 0) {
         return c.substring(name.length, c.length);
-        }
+      }
     }
     return "";
 }
   
 function setCookie(cname, cvalue) {
     const d = new Date();
-    d.setTime(d.getTime() + (365*24*60*60*1000));
-    let expires = "expires="+ d.toUTCString();
-    document.cookie = encodeURIComponent(cname + "=" + cvalue + ";" + expires + ";path=/");
+    d.setTime(d.getTime() + (100 * 24 * 60 * 60 * 1000));
+    let expires = "expires="+d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
   
 
@@ -936,12 +930,24 @@ Document.prototype.genText = function() {
   var text = '',
     characterCount = 0,
     arr = Array.from('!@#$%^&*()_+~`1234567890-={}[]:"|;\'\\<>?|,./\\');
-  arr = arr.concat(this.statistics.getHistory());
+  var atoz = [...Array(26)].map((_, i) => String.fromCharCode(i + "a".charCodeAt(0))); 
+  var AtoZ = [...Array(26)].map((_, i) => String.fromCharCode(i + "A".charCodeAt(0))); 
+
+  var show = [];
+  for(var i = 0; i < 2; i++) {
+    show.push(atoz[Math.floor(Math.random() * atoz.length)]);
+    show.push(AtoZ[Math.floor(Math.random() * AtoZ.length)]);
+  }
+  for(var i = 0; i < 6; i++) {
+    show.push(arr[Math.floor(Math.random() * arr.length)]);
+  }  
+
+  show = show.concat(this.statistics.getHistory());
 
   for (var i = 0; i < 3; i++) {
     characterCount = Math.floor(Math.random() * 3) + 6;
     for (var j = 0; j < characterCount; j++) {
-      text += arr[Math.floor(Math.random() * arr.length)];
+      text += show[Math.floor(Math.random() * show.length)];
     };
     if( i!= 2)
       text += '\n';
@@ -1499,7 +1505,11 @@ Statistics.prototype.getHistory = function() {
   var json_str = Cookie.getCookie('editor_history');
   var arr = [];
   if(json_str) 
-    arr = JSON.parse(json_str); 
+    try {
+      arr = JSON.parse(json_str); 
+    } catch(e) {
+      arr = []
+    }
   return arr;
 }
 
