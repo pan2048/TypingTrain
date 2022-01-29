@@ -3,7 +3,7 @@
 const HtmlTemplate = require ("../lib/HtmlTemplate")
 
 var MessageBox = function () {
-    document.body.appendChild(HtmlTemplate.htmlToElement(`
+    document.getElementById("main").appendChild(HtmlTemplate.htmlToElement(`
     <div>
         <fieldset>
             <legend>Message box</legend>

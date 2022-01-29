@@ -126,7 +126,7 @@ Editor.prototype.setMode = function(mode) {
       localFile = new LocalFile(editor);
     var EditorMode = require('gui/EditorMode'),
       editorMode = new EditorMode(editor);      
-    document.body.appendChild(editor.wrapper);   
+    document.getElementById("main").appendChild(editor.wrapper);   
     var MessageBox = require('gui/MessageBox'),
       messageBox = new MessageBox();
     
@@ -429,7 +429,7 @@ module.exports = Cursor;
 const HtmlTemplate = require ("../lib/HtmlTemplate")
 
 var EditorMode = function (editor) {
-    document.body.appendChild(HtmlTemplate.htmlToElement(`
+    document.getElementById("main").appendChild(HtmlTemplate.htmlToElement(`
     <div>
     <form id="editor_mode_form">
         <fieldset>
@@ -459,7 +459,7 @@ const HtmlTemplate = require ("../lib/HtmlTemplate")
 const File = require ("../lib/File")
 
 var LocalFile = function (editor) {
-    document.body.appendChild(HtmlTemplate.htmlToElement(`
+    document.getElementById("main").appendChild(HtmlTemplate.htmlToElement(`
     <div>
     <form>
         <fieldset style="float:left">
@@ -493,7 +493,7 @@ module.exports = LocalFile;
 const HtmlTemplate = require ("../lib/HtmlTemplate")
 
 var MessageBox = function () {
-    document.body.appendChild(HtmlTemplate.htmlToElement(`
+    document.getElementById("main").appendChild(HtmlTemplate.htmlToElement(`
     <div>
         <fieldset>
             <legend>Message box</legend>

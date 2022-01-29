@@ -3,7 +3,7 @@
 const HtmlTemplate = require ("../lib/HtmlTemplate")
 
 var EditorMode = function (editor) {
-    document.body.appendChild(HtmlTemplate.htmlToElement(`
+    document.getElementById("main").appendChild(HtmlTemplate.htmlToElement(`
     <div>
     <form id="editor_mode_form">
         <fieldset>

@@ -7,7 +7,7 @@ var Gui = function() {
       localFile = new LocalFile(editor);
     var EditorMode = require('gui/EditorMode'),
       editorMode = new EditorMode(editor);      
-    document.body.appendChild(editor.wrapper);   
+    document.getElementById("main").appendChild(editor.wrapper);   
     var MessageBox = require('gui/MessageBox'),
       messageBox = new MessageBox();
     

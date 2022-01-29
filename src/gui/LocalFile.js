@@ -4,7 +4,7 @@ const HtmlTemplate = require ("../lib/HtmlTemplate")
 const File = require ("../lib/File")
 
 var LocalFile = function (editor) {
-    document.body.appendChild(HtmlTemplate.htmlToElement(`
+    document.getElementById("main").appendChild(HtmlTemplate.htmlToElement(`
     <div>
     <form>
         <fieldset style="float:left">

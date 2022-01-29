@@ -19,5 +19,32 @@
   </script>
 </head>
 <body>
+  <div id="main">
+  </div>    
+  <div>
+    <fieldset>
+        <legend>You comment can help us make the webpage better! thanks!</legend>
+        <div id="disqus_thread"></div>
+      </fieldset>
+  </div>  
+  <script>
+      var disqus_config = function () {
+          this.page.url = 'https://pan2048.github.io/';  
+          this.page.identifier = 'typingtrain'; 
+      };
+      
+      (function() {  // REQUIRED CONFIGURATION VARIABLE: EDIT THE SHORTNAME BELOW
+          var d = document, s = d.createElement('script');
+          s.src = 'https://typingtrain.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+      })();
+  </script>
+  <noscript>
+      Please enable JavaScript to view the 
+      <a href="https://disqus.com/?ref_noscript" rel="nofollow">
+          comments powered by Disqus.
+      </a>
+  </noscript>  
 </body>
 </html>
