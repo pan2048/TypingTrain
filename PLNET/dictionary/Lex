@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+  <head>
+    <!-- Required meta tags -->
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">   
+    <link rel="shortcut icon" href="/resource/img/logo.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="/resource/highlight/styles/vs2015.css">
+    <link rel="stylesheet" href="/resource/custom.css">
+    <title></title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109032729-5"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-109032729-5');
+    </script>
+  </head>
+  <body>
+    <header>
+  <nav class="navbar bg-light bg-light">
+    <a class="navbar-brand" href="/">
+      <img src="/resource/img/logo.png" height="28"/>
+      PLNET
+    </a>
+    <form id="search_form">
+      <input type="text" id="search_text"/>
+      <button type="submit" class="btn btn-primary" id="search_button">Search...</button>
+    </form>
+    <a class="btn btn-primary" href="/login" role="button">Login</a>
+  </nav>
+</header>
+
+    <main><div class='container-fluid' id='dict_container'>
+      <h1><span class='badge badge-primary'>Lex</span></h1>
+      <div class='container-fluid'>
+          <pre id='word_content' style='white-space: pre-wrap;'>LEX is a tool used to generate a lexical analyzer. LEX translates a set of regular expression specifications into a C implementation of a corresponding finite state machine. This C program, when compiled, yields an executable lexical analyzer. 
+The source program is fed as the input to the the lexical analyzer which produces a sequence of tokens as output. Conceptually, a lexical analyzer scans a given source program and produces an output of tokens.
+Each token is specified by a token name. The token name is an abstract symbol representing the kind of lexical unit, e.g., a particular keyword, or a sequence of input characters denoting an identifier. The token names are the input symbols that the parser processes. 
+Lex was developed by Mike Lesk and Eric Schmidt at Bell labs. 
+```
+“integer”  	{return ID_TYPE_INTEGER;}
+```
+This example demonstrates the specification of a rule in LEX. The rule in this example specifies that the lexical analyzer must return the token named ID_TYPE_INTEGER when the pattern “integer” is found in the input file. A rule in a LEX program comprises of a &#039;pattern&#039; part (specified by a regular expression) and a corresponding (semantic) &#039;action&#039; part (a sequence of C statements). In the above example, “integer” is the pattern and {return ID_TYPE_INTEGER;} is the corresponding action. The statements in the action part will be executed when the pattern is detected in the input.
+&lt;b&gt;The structure of LEX programs&lt;/b&gt;
+A LEX program consists of three sections : Declarations, Rules and Auxiliary functions
+```
+DECLARATIONS
+%%
+RULES
+%%
+AUXILIARY FUNCTIONS
+```</pre>
+      </div>
+      <div class='btn-group-vertical text-left'>
+    <button type='button' class='btn btn-light'><b>Superconcept: </b><a href='/dictionary/Lexer_generator'>Lexer generator</a></button>
+      </div><br/>
+    <div class='container-fluid'>  <a class='btn btn-primary' href="/" role='button'>Home</a>  <a class='btn btn-primary' data-href="/action/edit/Lex" href='placeholder' id='word_edit' role='button'>Edit</a></div></div></main>
+    <footer>
+    <script>
+        document.getElementById("year").innerHTML = new Date().getFullYear();
+    </script>
+    <div class="text-center text-primary">  
+	    <a href="/">plnet.com 2018 - 
+            <script>
+                var CurrentYear = new Date().getFullYear()
+                document.write(CurrentYear)
+            </script>
+        </a>
+	</div> 
+</footer> 
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.2.3/mermaid.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js'></script>
+    <script src="/resource/highlight/highlight.pack.js"></script>
+    <script src="/client/src/app/main.js" type="module"></script>
+  </body>
+</html>

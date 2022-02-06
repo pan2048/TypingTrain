@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+  <head>
+    <!-- Required meta tags -->
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">   
+    <link rel="shortcut icon" href="/resource/img/logo.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="/resource/highlight/styles/vs2015.css">
+    <link rel="stylesheet" href="/resource/custom.css">
+    <title></title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109032729-5"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-109032729-5');
+    </script>
+  </head>
+  <body>
+    <header>
+  <nav class="navbar bg-light bg-light">
+    <a class="navbar-brand" href="/">
+      <img src="/resource/img/logo.png" height="28"/>
+      PLNET
+    </a>
+    <form id="search_form">
+      <input type="text" id="search_text"/>
+      <button type="submit" class="btn btn-primary" id="search_button">Search...</button>
+    </form>
+    <a class="btn btn-primary" href="/login" role="button">Login</a>
+  </nav>
+</header>
+
+    <main><div class='container-fluid' id='dict_container'>
+      <h1><span class='badge badge-primary'>abstract class in Java</span></h1>
+      <div class='container-fluid'>
+          <pre id='word_content' style='white-space: pre-wrap;'>An abstract class may contain any number of methods including zero. The methods can be abstract or concrete. Abstract methods may not appear in a class that is not abstract. The first concrete subclass of an abstract class is required to implement all abstract methods that were not implemented by a superclass.
+Abstract Class Definition Rules:
+* Abstract classes cannot be instantiated directly.
+* Abstract classes may be defined with any number, including zero, of abstract and non-abstract methods.
+* Abstract classes may not be marked as private or final.
+* An abstract class that extends another abstract class inherits all of its abstract methods as its own abstract methods.
+* The first concrete class that extends an abstract class must provide an implementation for all of the inherited abstract methods.
+
+you can declare abstract class without defining an abstract method in it. Once you declare a class abstract it indicates that the class is incomplete and, you cannot instantiate it. Hence, if you want to prevent instantiation of a class directly you can declare it abstract.
+
+&lt;b&gt;Interface vs Abstract Class&lt;/b&gt;
+Difference | Abstract class | Interface
+----- | ----- | -----
+Type of methods | Abstract class can have abstract and non-abstract methods. | Interface can have only abstract methods. From Java 8, it can have default and static methods also.
+Final Variables | Abstract class may contain non-final variables. | Variables declared in a Java interface are by default final. 
+Type of variables | Abstract class can have final, non-final, static and non-static variables. | Interface has only static and final variables.
+Implementation | Abstract class can provide the implementation of interface. | Interface can’t provide the implementation of abstract class.
+Inheritance vs Abstraction | Abstract class can be extended using keyword “extends”. | Interface can be implemented using keyword “implements”  
+Multiple implementation | Abstract class can extend another Java class and implement multiple Java interfaces.| Interface can extend another Java interface only 
+Accessibility of Data Members | Abstract class can have class members like private, protected, etc. | Members of a Java interface are public by default 
+</pre>
+      </div>
+      <div class='btn-group-vertical text-left'>
+    <button type='button' class='btn btn-light'><b>Superconcept: </b><a href='/dictionary/Abstract_class'>Abstract class</a>, <a href='/dictionary/Class_in_java'>Class in java</a></button><button type='button' class='btn btn-light'><b>Subcategory: </b><a href='/dictionary/Abstract_keyword_in_java'>Abstract keyword in java</a>, <a href='/dictionary/Abstract_method_in_java'>Abstract method in java</a></button>
+      </div><br/>
+    <div class='container-fluid'>  <a class='btn btn-primary' href="/" role='button'>Home</a>  <a class='btn btn-primary' data-href="/action/edit/abstract_class_in_Java" href='placeholder' id='word_edit' role='button'>Edit</a></div></div></main>
+    <footer>
+    <script>
+        document.getElementById("year").innerHTML = new Date().getFullYear();
+    </script>
+    <div class="text-center text-primary">  
+	    <a href="/">plnet.com 2018 - 
+            <script>
+                var CurrentYear = new Date().getFullYear()
+                document.write(CurrentYear)
+            </script>
+        </a>
+	</div> 
+</footer> 
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.2.3/mermaid.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js'></script>
+    <script src="/resource/highlight/highlight.pack.js"></script>
+    <script src="/client/src/app/main.js" type="module"></script>
+  </body>
+</html>

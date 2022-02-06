@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+  <head>
+    <!-- Required meta tags -->
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">   
+    <link rel="shortcut icon" href="/resource/img/logo.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="/resource/highlight/styles/vs2015.css">
+    <link rel="stylesheet" href="/resource/custom.css">
+    <title></title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109032729-5"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-109032729-5');
+    </script>
+  </head>
+  <body>
+    <header>
+  <nav class="navbar bg-light bg-light">
+    <a class="navbar-brand" href="/">
+      <img src="/resource/img/logo.png" height="28"/>
+      PLNET
+    </a>
+    <form id="search_form">
+      <input type="text" id="search_text"/>
+      <button type="submit" class="btn btn-primary" id="search_button">Search...</button>
+    </form>
+    <a class="btn btn-primary" href="/login" role="button">Login</a>
+  </nav>
+</header>
+
+    <main><div class='container-fluid' id='dict_container'>
+      <h1><span class='badge badge-primary'>date and time in Java</span></h1>
+      <div class='container-fluid'>
+          <pre id='word_content' style='white-space: pre-wrap;'>There are four choices in Java for date and time.
+Type | Meaning
+----- | -----
+LocalDate | Contains just a date—no time and no time zone. 
+LocalTime | Contains just a time—no date and no time zone. 
+LocalDateTime | Contains both a date and time but no time zone. 
+ZonedDateTime | Contains a date, time, and time zone. 
+
+```
+import java.time.*;  // import time classes
+public class Main {
+    public static void main(String args[]) {
+        System.out.println(LocalDate.now());
+        System.out.println(LocalTime.now());
+        System.out.println(LocalDateTime.now());
+        System.out.println(ZonedDateTime.now());
+    }
+}
+
+/*
+2021-03-02
+16:56:11.711
+2021-03-02T16:56:11.711
+2021-03-02T16:56:11.712Z[America/New_York]
+*/
+```
+&lt;b&gt;Format&lt;/b&gt;
+* &lt;b&gt;MMMM&lt;/b&gt; M represents the month. The more M s you have, the more verbose the Java output. For example, M outputs 1, MM outputs 01, MMM outputs Jan, and MMMM outputs January.
+* &lt;b&gt;dd&lt;/b&gt; d represents the day in the month. As with month , the more d s you have, the more verbose the Java output. dd means to include the leading zero for a single-digit day.
+* &lt;b&gt;,&lt;/b&gt; Use , if you want to output a comma (this also appears after the year).
+* &lt;b&gt;yyyy&lt;/b&gt; y represents the year. yy outputs a two-digit year and yyyy outputs a four-digit year.
+* &lt;b&gt;hh&lt;/b&gt; h represents the hour. Use hh to include the leading zero if you’re outputting a single-digit hour.
+* &lt;b&gt;:&lt;/b&gt; Use : if you want to output a colon.
+* &lt;b&gt;m&lt;/b&gt; represents the minute omitting the leading zero if present. mm is more common and represents the minutes using two digits.
+
+Methods  in  LocalDate, LocalTime, and LocalDateTime
+| | Can call on LocalDate? | Can call on LocalTime? | Can call on LocalDateTime?
+| ------ | ------ |----- | ----- 
+|plusYears/minusYears | Yes | No | Yes
+|plusMonths/minusMonths | Yes | No | Yes
+|plusWeeks/minusWeeks | Yes | No | Yes
+|plusDays/minusDays | Yes | No | Yes
+|plusHours/minusHours | No | Yes | Yes
+|plusMinutes/minusMinutes | No | Yes | Yes
+|plusSeconds/minusSeconds | No | Yes | Yes
+|plusNanos/minusNanos | No | Yes | Yes
+
+
+Note any changes made to an instance will create a new object instead of modifying the existing one.
+```
+import java.time.LocalTime;
+import java.time.temporal.ChronoField;
+
+class Main {
+    public static void main(String[] args) {
+        LocalTime localTime = LocalTime.of(1, 15, 30);
+        localTime.withHour(2).with(ChronoField.MINUTE_OF_HOUR, 30).plusSeconds(10);
+        System.out.println(localTime); // 01:15:30
+    }
+}
+```
+
+</pre>
+      </div>
+      <div class='btn-group-vertical text-left'>
+    <button type='button' class='btn btn-light'><b>Superconcept: </b><a href='/dictionary/Date_and_time'>Date and time</a>, <a href='/dictionary/Primitive_data_type_in_java'>Primitive data type in java</a></button>
+      </div><br/>
+    <div class='container-fluid'>  <a class='btn btn-primary' href="/" role='button'>Home</a>  <a class='btn btn-primary' data-href="/action/edit/date_and_time_in_Java" href='placeholder' id='word_edit' role='button'>Edit</a></div></div></main>
+    <footer>
+    <script>
+        document.getElementById("year").innerHTML = new Date().getFullYear();
+    </script>
+    <div class="text-center text-primary">  
+	    <a href="/">plnet.com 2018 - 
+            <script>
+                var CurrentYear = new Date().getFullYear()
+                document.write(CurrentYear)
+            </script>
+        </a>
+	</div> 
+</footer> 
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.2.3/mermaid.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js'></script>
+    <script src="/resource/highlight/highlight.pack.js"></script>
+    <script src="/client/src/app/main.js" type="module"></script>
+  </body>
+</html>

@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+  <head>
+    <!-- Required meta tags -->
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">   
+    <link rel="shortcut icon" href="/resource/img/logo.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="/resource/highlight/styles/vs2015.css">
+    <link rel="stylesheet" href="/resource/custom.css">
+    <title></title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109032729-5"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-109032729-5');
+    </script>
+  </head>
+  <body>
+    <header>
+  <nav class="navbar bg-light bg-light">
+    <a class="navbar-brand" href="/">
+      <img src="/resource/img/logo.png" height="28"/>
+      PLNET
+    </a>
+    <form id="search_form">
+      <input type="text" id="search_text"/>
+      <button type="submit" class="btn btn-primary" id="search_button">Search...</button>
+    </form>
+    <a class="btn btn-primary" href="/login" role="button">Login</a>
+  </nav>
+</header>
+
+    <main><div class='container-fluid' id='dict_container'>
+      <h1><span class='badge badge-primary'>volatile keyword in C++</span></h1>
+      <div class='container-fluid'>
+          <pre id='word_content' style='white-space: pre-wrap;'>According to the C++11 ISO Standard, the volatile keyword is only meant for use for hardware access; do not use it for inter-thread communication. For inter-thread communication, the standard library provides std::atomic&lt;T&gt; templates.
+```
+#include &lt;csignal&gt;
+#include &lt;iostream&gt;
+using namespace std;
+
+volatile sig_atomic_t gSignalStatus;
+
+void signal_handler(int signal) {
+  gSignalStatus = signal;
+}
+
+int main() {
+  signal(SIGINT, signal_handler);
+
+  cout &lt;&lt; &quot;SignalValue: &quot; &lt;&lt; gSignalStatus &lt;&lt; endl;
+  cout &lt;&lt; &quot;Sending signal &quot; &lt;&lt; SIGINT &lt;&lt; endl;
+  raise(SIGINT);
+  cout &lt;&lt; &quot;SignalValue: &quot; &lt;&lt; gSignalStatus &lt;&lt; endl;
+}
+```</pre>
+      </div>
+      <div class='btn-group-vertical text-left'>
+    <button type='button' class='btn btn-light'><b>Superconcept: </b><a href='/dictionary/Keyword_in_c++'>Keyword in c++</a>, <a href='/dictionary/Volatile_keyword'>Volatile keyword</a></button>
+      </div><br/>
+    <div class='container-fluid'>  <a class='btn btn-primary' href="/" role='button'>Home</a>  <a class='btn btn-primary' data-href="/action/edit/volatile_keyword_in_C++" href='placeholder' id='word_edit' role='button'>Edit</a></div></div></main>
+    <footer>
+    <script>
+        document.getElementById("year").innerHTML = new Date().getFullYear();
+    </script>
+    <div class="text-center text-primary">  
+	    <a href="/">plnet.com 2018 - 
+            <script>
+                var CurrentYear = new Date().getFullYear()
+                document.write(CurrentYear)
+            </script>
+        </a>
+	</div> 
+</footer> 
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.2.3/mermaid.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js'></script>
+    <script src="/resource/highlight/highlight.pack.js"></script>
+    <script src="/client/src/app/main.js" type="module"></script>
+  </body>
+</html>

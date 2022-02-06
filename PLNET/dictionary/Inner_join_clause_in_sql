@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+  <head>
+    <!-- Required meta tags -->
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">   
+    <link rel="shortcut icon" href="/resource/img/logo.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="/resource/highlight/styles/vs2015.css">
+    <link rel="stylesheet" href="/resource/custom.css">
+    <title></title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109032729-5"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-109032729-5');
+    </script>
+  </head>
+  <body>
+    <header>
+  <nav class="navbar bg-light bg-light">
+    <a class="navbar-brand" href="/">
+      <img src="/resource/img/logo.png" height="28"/>
+      PLNET
+    </a>
+    <form id="search_form">
+      <input type="text" id="search_text"/>
+      <button type="submit" class="btn btn-primary" id="search_button">Search...</button>
+    </form>
+    <a class="btn btn-primary" href="/login" role="button">Login</a>
+  </nav>
+</header>
+
+    <main><div class='container-fluid' id='dict_container'>
+      <h1><span class='badge badge-primary'>inner join clause in SQL</span></h1>
+      <div class='container-fluid'>
+          <pre id='word_content' style='white-space: pre-wrap;'>In a relation database, data is typically distributed in more than one table. To select complete data, you often need to query data from multiple tables.
+Suppose that you have two tables A and B. The table A has a column pka whose value matches with values in the fka column of table B.
+To select data from both tables, you use the INNER JOIN clause in the SELECT statement as follows:
+```
+SELECT
+	pka,
+	c1,
+	pkb,
+	c2
+FROM
+	A
+INNER JOIN B ON pka = fka;
+```
+To join table A with the table B, you follow these steps:
+*    First, specify columns from both tables that you want to select data in the SELECT clause.
+*    Second, specify the main table i.e., table A in the FROM clause.
+*    Third, specify the second table (table B) in the INNER JOIN clause and provide a join condition after the ON keyword.
+
+For each row in the table A, inner join compares the value in the pka column with the value in the fka column of every row in the table B:
+*    If these values are equal, the inner join creates a new row that contains all columns of both tables and adds it to the result set.
+*    In case these values are not equal, the inner join just ignores them and moves to the next row.
+
+Most of the time, the tables that you want to join will have columns with the same name e.g., id column like customer_id.
+If you reference columns with the same name from different tables in a query, you will get an error. To avoid the error, you need to qualify these columns fully using the following syntax:
+```
+table_name.column_name
+```
+In practice, you will use table aliases to assign the joined tables short names to make the query more readable.
+```
+SELECT
+	customer.customer_id,
+	first_name,
+	last_name,
+	amount,
+	payment_date
+FROM
+	customer
+INNER JOIN payment 
+    ON payment.customer_id = customer.customer_id
+ORDER BY payment_date;
+```</pre>
+      </div>
+      <div class='btn-group-vertical text-left'>
+    <button type='button' class='btn btn-light'><b>Superconcept: </b><a href='/dictionary/Join_clause_in_sql'>Join clause in sql</a></button>
+      </div><br/>
+    <div class='container-fluid'>  <a class='btn btn-primary' href="/" role='button'>Home</a>  <a class='btn btn-primary' data-href="/action/edit/inner_join_clause_in_SQL" href='placeholder' id='word_edit' role='button'>Edit</a></div></div></main>
+    <footer>
+    <script>
+        document.getElementById("year").innerHTML = new Date().getFullYear();
+    </script>
+    <div class="text-center text-primary">  
+	    <a href="/">plnet.com 2018 - 
+            <script>
+                var CurrentYear = new Date().getFullYear()
+                document.write(CurrentYear)
+            </script>
+        </a>
+	</div> 
+</footer> 
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.2.3/mermaid.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js'></script>
+    <script src="/resource/highlight/highlight.pack.js"></script>
+    <script src="/client/src/app/main.js" type="module"></script>
+  </body>
+</html>

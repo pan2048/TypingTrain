@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+  <head>
+    <!-- Required meta tags -->
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">   
+    <link rel="shortcut icon" href="/resource/img/logo.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="/resource/highlight/styles/vs2015.css">
+    <link rel="stylesheet" href="/resource/custom.css">
+    <title></title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109032729-5"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-109032729-5');
+    </script>
+  </head>
+  <body>
+    <header>
+  <nav class="navbar bg-light bg-light">
+    <a class="navbar-brand" href="/">
+      <img src="/resource/img/logo.png" height="28"/>
+      PLNET
+    </a>
+    <form id="search_form">
+      <input type="text" id="search_text"/>
+      <button type="submit" class="btn btn-primary" id="search_button">Search...</button>
+    </form>
+    <a class="btn btn-primary" href="/login" role="button">Login</a>
+  </nav>
+</header>
+
+    <main><div class='container-fluid' id='dict_container'>
+      <h1><span class='badge badge-primary'>primitive wrapper class in Java</span></h1>
+      <div class='container-fluid'>
+          <pre id='word_content' style='white-space: pre-wrap;'>A wrapper class is a class that encapsulates types, so that those types can be used in another class that need those types. 
+A primitive wrapper class is a wrapper class that encapsulates, hides or wraps data types from the eight primitive data types, so that these can be used in other classes. 
+Primitive Data Type | Wrapper Class | Example of constructing
+----- | ----- | -----
+boolean | Boolean | new Boolean(true)
+byte | Byte | new Byte((byte) 1)
+short | Short | new Short((short) 1)
+int | Integer | new Integer(1)
+long | Long | new Long(1)
+float | Float | new Float(1.0)
+double | Double | new Double(1.0)
+char | Character | new Character(&#039;c&#039;)
+
+converting from a String
+Wrapper class | Converting String to primitive | Converting String to wrapper class
+----- | ----- | -----
+Boolean | Boolean.parseBoolean(&quot;true&quot;); | Boolean.valueOf(&quot;TRUE&quot;);
+Byte | Byte.parseByte(&quot;1&quot;); | Byte.valueOf(&quot;2&quot;);
+Short | Short.parseShort(&quot;1&quot;); | Short.valueOf(&quot;2&quot;);
+Integer | Integer.parseInt(&quot;1&quot;); | Integer.valueOf(&quot;2&quot;);
+Long | Long.parseLong(&quot;1&quot;); | Long.valueOf(&quot;2&quot;);
+Float | Float.parseFloat(&quot;1&quot;); | Float.valueOf(&quot;2.2&quot;);
+Double | Double.parseDouble(&quot;1&quot;); | Double.valueOf(&quot;2.2&quot;);
+Character | None | None
+
+
+Ways to create a integer wrapper class,
+```
+public class Main {
+    public static void main(String[] args) {
+        Integer i1 = Integer.valueOf(&quot;1&quot;);
+        Integer i2 = Integer.parseInt(&quot;2&quot;);
+        Integer i3 = Integer.decode(&quot;3&quot;);
+        Integer i4 = new Integer(&quot;4&quot;);
+        Integer i5 = new Integer(5);
+        Integer i6 = 4;
+    }
+}
+```
+Boolean(&quot;True&quot;) or Boolean(&quot;true&quot;) will be true, and Boolean(&quot;T&quot;) or Boolean(&quot;yes&quot;) will be false.
+```
+public class Main {
+    static Integer i;
+    public static void main(String[] args) {
+        System.out.println(1+i); // throws exception since i is not initialized
+    }
+}
+```
+Primitive wrapper need to init, otherwise the value is null.
+```
+public class Main{
+   static Integer i;
+   public static void main(String[] args) {
+        System.out.println(1+ i); // exception cause i is null!
+    }
+}
+```</pre>
+      </div>
+      <div class='btn-group-vertical text-left'>
+    <button type='button' class='btn btn-light'><b>Superconcept: </b><a href='/dictionary/Class_in_java'>Class in java</a></button><button type='button' class='btn btn-light'><b>Supercategory: </b><a href='/dictionary/Primitive_data_type_in_java'>Primitive data type in java</a></button>
+      </div><br/>
+    <div class='container-fluid'>  <a class='btn btn-primary' href="/" role='button'>Home</a>  <a class='btn btn-primary' data-href="/action/edit/primitive_wrapper_class_in_Java" href='placeholder' id='word_edit' role='button'>Edit</a></div></div></main>
+    <footer>
+    <script>
+        document.getElementById("year").innerHTML = new Date().getFullYear();
+    </script>
+    <div class="text-center text-primary">  
+	    <a href="/">plnet.com 2018 - 
+            <script>
+                var CurrentYear = new Date().getFullYear()
+                document.write(CurrentYear)
+            </script>
+        </a>
+	</div> 
+</footer> 
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.2.3/mermaid.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js'></script>
+    <script src="/resource/highlight/highlight.pack.js"></script>
+    <script src="/client/src/app/main.js" type="module"></script>
+  </body>
+</html>

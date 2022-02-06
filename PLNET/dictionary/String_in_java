@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+  <head>
+    <!-- Required meta tags -->
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">   
+    <link rel="shortcut icon" href="/resource/img/logo.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="/resource/highlight/styles/vs2015.css">
+    <link rel="stylesheet" href="/resource/custom.css">
+    <title></title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109032729-5"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-109032729-5');
+    </script>
+  </head>
+  <body>
+    <header>
+  <nav class="navbar bg-light bg-light">
+    <a class="navbar-brand" href="/">
+      <img src="/resource/img/logo.png" height="28"/>
+      PLNET
+    </a>
+    <form id="search_form">
+      <input type="text" id="search_text"/>
+      <button type="submit" class="btn btn-primary" id="search_button">Search...</button>
+    </form>
+    <a class="btn btn-primary" href="/login" role="button">Login</a>
+  </nav>
+</header>
+
+    <main><div class='container-fluid' id='dict_container'>
+      <h1><span class='badge badge-primary'>string in Java</span></h1>
+      <div class='container-fluid'>
+          <pre id='word_content' style='white-space: pre-wrap;'>The String data type is used to store a sequence of characters (text). 
+```
+String greeting = &quot;Hello World&quot;;
+```
+Class and instance string, the default value is null. Local string requires assignment before referencing it. 
+Once a String object is created, it is not allowed to change. It cannot be made larger or smaller, and you cannot change one of the characters inside it. 
+The string pool, also known as the intern pool, is a location in the Java virtual machine (JVM) that collects all these strings. The string pool contains literal values that appear in your program. 
+The + operator can be used in two ways for string concatenation. 
+* If both operands are numeric, + means numeric addition.
+* If either operand is a String, + means concatenation.
+* The expression is evaluated left to right.
+
+Some string methods are listed below,
+Method | Description
+----- | -----
+char charAt(int index) | Returns the character at the specified index.
+String concat(String str) | Concatenates the specified string to the end of this string.
+boolean contains(String str) | Looks for matches in the String. 
+boolean contentEquals(StringBuilder sb) | Used to compare the contents of String and StringBuffer. 
+boolean endsWith(String suffix) | Tests if this string ends with the specified suffix.
+boolean equals(String anotherString) | Compares this string to another string.
+boolean equalsIgnoreCase(String anotherString) | Compares this String to another String, ignoring case considerations.
+int length() | Returns the length of this string.
+int lastIndexOf(char ch, index fromIndex) | Returns the index within the string of the last occurrence of the specified substring, searching backward starting at the specified index. The last occurrence is the first one find in the string.
+int indexOf(char ch)&lt;br&gt;int indexOf(char ch, index fromIndex)&lt;br&gt;int indexOf(String str)&lt;br&gt;int indexOf(String str, index fromIndex) | Returns the index within this string of the first occurrence of the specified substring.
+String replace(char oldChar, char newChar)&lt;br&gt;String replace(CharSequence oldChar, CharSequence newChar) | Returns a new string resulting from replacing all occurrences of oldChar in this string with newChar.
+boolean startsWith(String prefix) | Tests if this string starts with the specified prefix.
+String substring(int beginIndex)&lt;br&gt;String substring(int beginIndex, int endIndex)  | Returns a new string that is a 
+String toLowerCase(String str) | Converts all of the characters in this String to lower case using the rules of the default locale.
+String toUpperCase() | Converts all of the characters in this String to upper case using the rules of the default locale.
+String trim() | Returns a copy of the string, with leading and trailing whitespace omitted.
+
+Comparing String, StringBuilder, and StringBuffer
+Characteristic | String | StringBuilder | StringBuffer
+----- | ----- | ----- | ----- 
+Immutable? | Yes | No | No
+Pooled? | Yes | No | No
+Thread-safe? | Yes | No | Yes
+Can change size? | No | Yes | Yes
+
+Usage of StringBuilder and StringBuffer.
+```
+class Main{  
+    public static void main(String args[]){  
+        StringBuilder sb = new StringBuilder(&quot;Hello &quot;);  
+        sb.append(&quot;Java&quot;); 
+        System.out.println(sb); 
+        StringBuffer sbf = new StringBuffer(&quot;Hello &quot;);  
+        sbf.append(&quot;Java&quot;); 
+        System.out.println(sbf); 
+    }  
+} 
+```</pre>
+      </div>
+      <div class='btn-group-vertical text-left'>
+    <button type='button' class='btn btn-light'><b>Superconcept: </b><a href='/dictionary/Composite_data_type_in_java'>Composite data type in java</a>, <a href='/dictionary/String'>String</a></button><button type='button' class='btn btn-light'><b>Subcategory: </b><a href='/dictionary/Stringbuilder_in_java'>Stringbuilder in java</a>, <a href='/dictionary/String_literal_in_java'>String literal in java</a></button>
+      </div><br/>
+    <div class='container-fluid'>  <a class='btn btn-primary' href="/" role='button'>Home</a>  <a class='btn btn-primary' data-href="/action/edit/string_in_Java" href='placeholder' id='word_edit' role='button'>Edit</a></div></div></main>
+    <footer>
+    <script>
+        document.getElementById("year").innerHTML = new Date().getFullYear();
+    </script>
+    <div class="text-center text-primary">  
+	    <a href="/">plnet.com 2018 - 
+            <script>
+                var CurrentYear = new Date().getFullYear()
+                document.write(CurrentYear)
+            </script>
+        </a>
+	</div> 
+</footer> 
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.2.3/mermaid.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js'></script>
+    <script src="/resource/highlight/highlight.pack.js"></script>
+    <script src="/client/src/app/main.js" type="module"></script>
+  </body>
+</html>

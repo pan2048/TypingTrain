@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+  <head>
+    <!-- Required meta tags -->
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">   
+    <link rel="shortcut icon" href="/resource/img/logo.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="/resource/highlight/styles/vs2015.css">
+    <link rel="stylesheet" href="/resource/custom.css">
+    <title></title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109032729-5"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-109032729-5');
+    </script>
+  </head>
+  <body>
+    <header>
+  <nav class="navbar bg-light bg-light">
+    <a class="navbar-brand" href="/">
+      <img src="/resource/img/logo.png" height="28"/>
+      PLNET
+    </a>
+    <form id="search_form">
+      <input type="text" id="search_text"/>
+      <button type="submit" class="btn btn-primary" id="search_button">Search...</button>
+    </form>
+    <a class="btn btn-primary" href="/login" role="button">Login</a>
+  </nav>
+</header>
+
+    <main><div class='container-fluid' id='dict_container'>
+      <h1><span class='badge badge-primary'>JDBC statement</span></h1>
+      <div class='container-fluid'>
+          <pre id='word_content' style='white-space: pre-wrap;'>Getting a Statement from a Connection:
+```
+Statement stmt1 = conn.createStatement();
+ResultSet rs =  stmt1.executeQuery(&quot;select * from species&quot;);
+Statement stmt2 = conn.createStatement(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY);
+int result = stmt2.executeUpdate(&quot;insert into species values(10, &#039;Deer&#039;, 3)&quot;);
+```
+This signature of stmt2 takes two parameters. The first is the ResultSet type, and the other is the ResultSet concurrency mode. 
+&lt;b&gt;ResultSet type options&lt;/b&gt; 
+ResultSet  Type | Can Go Backward | See Latest Data from Database Table | Supported by Most Drivers
+------ | ------ | ------ | ------ 
+ResultSet.TYPE_FORWARD_ONLY | No | No | Yes
+ResultSet.TYPE_SCROLL_INSENSITIVE | Yes | No | Yes
+ResultSet.TYPE_SCROLL_SENSITIVE | Yes | Yes | No
+
+If the type you request isn’t available, the driver can “helpfully” downgrade to one that is.
+&lt;b&gt;ResultSet concurrency mode options&lt;/b&gt; 
+ResultSet  Type | Can Read Data | Can Update Data | Supported by All Drivers
+------ | ------ | ------ | ------ 
+ResultSet.CONCUR_READ_ONLY | Yes | Yes | No
+ResultSet.CONCUR_UPDATABLE | Yes | No | Yes
+
+If the mode you request isn’t available, the driver can downgrade you.
+&lt;b&gt;SQL runnable by execute method&lt;/b&gt;
+Method | DELETE | INSERT | SELECT | UPDATE
+------ | ------ | ------ | ------ | ------ 
+stmt.execute() | Yes | Yes | Yes | Yes
+stmt.executeQuery() | No | No | Yes | No
+stmt.executeUpdate() | Yes | Yes | No | Yes
+
+&lt;b&gt;Return types of executes&lt;/b&gt;
+Method | Return Type | What Is Returned for SELECT | What Is Returned for DELETE/INSERT/UPDATE
+------ | ------ | ------ | ------
+stmt.execute() | boolean | true | false
+stmt.executeQuery() | ResultSet | The rows and columns returned | n/a
+stmt.executeUpdate() | int | n/a | Number of rows added/changed/removed
+
+Also in real life, you should not use Statement directly. You should use a subclass called PreparedStatement. This subclass has three advantages: performance, security, and readability.
+</pre>
+      </div>
+      <div class='btn-group-vertical text-left'>
+    <button type='button' class='btn btn-light'><b>Supercategory: </b><a href='/dictionary/Jdbc'>Jdbc</a></button>
+      </div><br/>
+    <div class='container-fluid'>  <a class='btn btn-primary' href="/" role='button'>Home</a>  <a class='btn btn-primary' data-href="/action/edit/JDBC_statement" href='placeholder' id='word_edit' role='button'>Edit</a></div></div></main>
+    <footer>
+    <script>
+        document.getElementById("year").innerHTML = new Date().getFullYear();
+    </script>
+    <div class="text-center text-primary">  
+	    <a href="/">plnet.com 2018 - 
+            <script>
+                var CurrentYear = new Date().getFullYear()
+                document.write(CurrentYear)
+            </script>
+        </a>
+	</div> 
+</footer> 
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.2.3/mermaid.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js'></script>
+    <script src="/resource/highlight/highlight.pack.js"></script>
+    <script src="/client/src/app/main.js" type="module"></script>
+  </body>
+</html>

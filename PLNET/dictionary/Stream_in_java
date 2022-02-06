@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+  <head>
+    <!-- Required meta tags -->
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">   
+    <link rel="shortcut icon" href="/resource/img/logo.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="/resource/highlight/styles/vs2015.css">
+    <link rel="stylesheet" href="/resource/custom.css">
+    <title></title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109032729-5"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-109032729-5');
+    </script>
+  </head>
+  <body>
+    <header>
+  <nav class="navbar bg-light bg-light">
+    <a class="navbar-brand" href="/">
+      <img src="/resource/img/logo.png" height="28"/>
+      PLNET
+    </a>
+    <form id="search_form">
+      <input type="text" id="search_text"/>
+      <button type="submit" class="btn btn-primary" id="search_button">Search...</button>
+    </form>
+    <a class="btn btn-primary" href="/login" role="button">Login</a>
+  </nav>
+</header>
+
+    <main><div class='container-fluid' id='dict_container'>
+      <h1><span class='badge badge-primary'>stream in Java</span></h1>
+      <div class='container-fluid'>
+          <pre id='word_content' style='white-space: pre-wrap;'>Java streams are Monads. A stream in Java is a sequence of data. 
+Streams differ from collections in several ways:
+*    No storage. A stream is not a data structure that stores elements; instead, it conveys elements from a source such as a data structure, an array, a generator function, or an I/O channel, through a pipeline of computational operations.
+*    Functional in nature. An operation on a stream produces a result, but does not modify its source. For example, filtering a Stream obtained from a collection produces a new Stream without the filtered elements, rather than removing elements from the source collection.
+*    Laziness-seeking. Many stream operations, such as filtering, mapping, or duplicate removal, can be implemented lazily, exposing opportunities for optimization. For example, &quot;find the first String with three consecutive vowels&quot; need not examine all the input strings. Stream operations are divided into intermediate (Stream-producing) operations and terminal (value- or side-effect-producing) operations. Intermediate operations are always lazy.
+*    Possibly unbounded. While collections have a finite size, streams need not. Short-circuiting operations such as limit(n) or findFirst() can allow computations on infinite streams to complete in finite time.
+*    Consumable. The elements of a stream are only visited once during the life of a stream. Like an Iterator, a new stream must be generated to revisit the same elements of the source.
+
+A stream pipeline is the operations that run on a stream to produce a result. There are three parts to a stream pipeline:
+* Source: Where the stream comes from.
+* Intermediate operations: Transforms the stream into another one. There can be as few or as many intermediate operations as you’d like. Since streams use lazy evaluation, the intermediate operations do not run until the terminal operation runs. 
+* Terminal operation: Actually produces a result. Since streams can be used only once, the stream is no longer valid after a terminal operation completes.
+
+&lt;b&gt;Intermediate vs. terminal operations&lt;/b&gt;
+Scenario | For Intermediate Operations?  | For Terminal Operations?
+----- | ----- | ----
+Is required part of a useful pipeline?  | No  | Yes
+Can exist multiple times in a pipeline?  | Yes  | No
+Return type is a stream type?  | Yes  | No
+Executed upon method call?  | No  | Yes
+Stream valid after call?  | Yes  | No
+
+&lt;b&gt;Terminal stream operations&lt;/b&gt;
+Method | What Happens for Infinite Streams | Return Value | Reduction
+----- | ----- | ----- | -----
+allMatch()&lt;br&gt;/anyMatch()&lt;br&gt;/noneMatch() | Sometimes terminates | boolean | No
+collect() | Does not terminate | Varies | Yes
+count() | Does not terminate | long | Yes
+findAny()&lt;br&gt;/findFirst() | Terminates | Optional&lt;T&gt; | No
+forEach() | Does not terminate | void | No
+min()/max() | Does not terminate | Optional&lt;T&gt; | Yes
+reduce() | Does not terminate | Varies | Yes
+
+
+&lt;b&gt;Intermediate stream operations&lt;/b&gt;
+Method | Meaning
+----- | ----- 
+filter()| Returns a Stream with elements that match a given expression
+distinct() | Returns a stream with duplicate values removed (according to methods Object.equals, Object.hashCode) of the input stream.
+limit()&lt;br&gt;skip() | Make a Stream smaller.
+map() | Creates a one-to-one mapping from the elements in the stream to the elements of the next step in the stream.
+flatMap() | Takes each element in the stream and makes any elements it contains top-level elements in a single stream.
+sorted() | Returns a stream with the elements sorted.
+peek() | Allows us to perform a stream operation without actually changing the stream.
+
+&lt;b&gt;How to print a stream&lt;/b&gt;
+Option | Works for Infinite Streams? | Destructive to Stream?
+----- | ----- | -----
+s.forEach(System.out::println); | No | Yes
+System.out.println(s.collect(Collectors.toList())); | No | Yes
+s.peek(System.out::println).count(); | No | No
+s.limit(5).forEach(System.out::println); | Yes | Yes
+</pre>
+      </div>
+      <div class='btn-group-vertical text-left'>
+    <button type='button' class='btn btn-light'><b>Superconcept: </b><a href='/dictionary/Monad'>Monad</a></button><button type='button' class='btn btn-light'><b>Supercategory: </b><a href='/dictionary/Functional_programming_in_java'>Functional programming in java</a></button><button type='button' class='btn btn-light'><b>Subconcept: </b><a href='/dictionary/Parallel_stream_in_java'>Parallel stream in java</a>, <a href='/dictionary/Primitive_steam_in_java'>Primitive steam in java</a></button>
+      </div><br/>
+    <div class='container-fluid'>  <a class='btn btn-primary' href="/" role='button'>Home</a>  <a class='btn btn-primary' data-href="/action/edit/stream_in_Java" href='placeholder' id='word_edit' role='button'>Edit</a></div></div></main>
+    <footer>
+    <script>
+        document.getElementById("year").innerHTML = new Date().getFullYear();
+    </script>
+    <div class="text-center text-primary">  
+	    <a href="/">plnet.com 2018 - 
+            <script>
+                var CurrentYear = new Date().getFullYear()
+                document.write(CurrentYear)
+            </script>
+        </a>
+	</div> 
+</footer> 
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.2.3/mermaid.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js'></script>
+    <script src="/resource/highlight/highlight.pack.js"></script>
+    <script src="/client/src/app/main.js" type="module"></script>
+  </body>
+</html>

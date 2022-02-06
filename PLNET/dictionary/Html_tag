@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+  <head>
+    <!-- Required meta tags -->
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">   
+    <link rel="shortcut icon" href="/resource/img/logo.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="/resource/highlight/styles/vs2015.css">
+    <link rel="stylesheet" href="/resource/custom.css">
+    <title></title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109032729-5"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-109032729-5');
+    </script>
+  </head>
+  <body>
+    <header>
+  <nav class="navbar bg-light bg-light">
+    <a class="navbar-brand" href="/">
+      <img src="/resource/img/logo.png" height="28"/>
+      PLNET
+    </a>
+    <form id="search_form">
+      <input type="text" id="search_text"/>
+      <button type="submit" class="btn btn-primary" id="search_button">Search...</button>
+    </form>
+    <a class="btn btn-primary" href="/login" role="button">Login</a>
+  </nav>
+</header>
+
+    <main><div class='container-fluid' id='dict_container'>
+      <h1><span class='badge badge-primary'>HTML tag</span></h1>
+      <div class='container-fluid'>
+          <pre id='word_content' style='white-space: pre-wrap;'>HTML tags are not case sensitive: \&lt;P&gt; means the same as \&lt;p&gt;.</pre>
+      </div>
+      <div class='btn-group-vertical text-left'>
+    <button type='button' class='btn btn-light'><b>Supercategory: </b><a href='/dictionary/Html_element'>Html element</a></button><button type='button' class='btn btn-light'><b>Subconcept: </b><a href='/dictionary/Html_%3C!doctype%3E_tag'>Html &lt;!doctype&gt; tag</a>, <a href='/dictionary/Html_%3Ca%3E_tag'>Html &lt;a&gt; tag</a>, <a href='/dictionary/Html_%3Cabbr%3E_tag'>Html &lt;abbr&gt; tag</a>, <a href='/dictionary/Html_%3Caddress%3E_tag'>Html &lt;address&gt; tag</a>, <a href='/dictionary/Html_%3Carticle%3E_tag'>Html &lt;article&gt; tag</a>, <a href='/dictionary/Html_%3Caside%3E_tag'>Html &lt;aside&gt; tag</a>, <a href='/dictionary/Html_%3Caudio%3E_tag'>Html &lt;audio&gt; tag</a>, <a href='/dictionary/Html_%3Cb%3E_tag'>Html &lt;b&gt; tag</a>, <a href='/dictionary/Html_%3Cbase%3E_tag'>Html &lt;base&gt; tag</a>, <a href='/dictionary/Html_%3Cblockquote%3E_tag'>Html &lt;blockquote&gt; tag</a>, <a href='/dictionary/Html_%3Cbody%3E_tag'>Html &lt;body&gt; tag</a>, <a href='/dictionary/Html_%3Cbr_/%3E_tag'>Html &lt;br /&gt; tag</a>, <a href='/dictionary/Html_%3Cbutton%3E_tag'>Html &lt;button&gt; tag</a>, <a href='/dictionary/Html_%3Ccite%3E_tag'>Html &lt;cite&gt; tag</a>, <a href='/dictionary/Html_%3Ccode%3E_tag'>Html &lt;code&gt; tag</a>, <a href='/dictionary/Html_%3Cdd%3E_tag'>Html &lt;dd&gt; tag</a>, <a href='/dictionary/Html_%3Cdel%3E_tag'>Html &lt;del&gt; tag</a>, <a href='/dictionary/Html_%3Cdfn%3E_tag'>Html &lt;dfn&gt; tag</a>, <a href='/dictionary/Html_%3Cdiv%3E_tag'>Html &lt;div&gt; tag</a>, <a href='/dictionary/Html_%3Cdl%3E_tag'>Html &lt;dl&gt; tag</a>, <a href='/dictionary/Html_%3Cdt%3E_tag'>Html &lt;dt&gt; tag</a>, <a href='/dictionary/Html_%3Cem%3E_tag'>Html &lt;em&gt; tag</a>, <a href='/dictionary/Html_%3Cfieldset%3E_tag'>Html &lt;fieldset&gt; tag</a>, <a href='/dictionary/Html_%3Cfigcaption%3E_tag'>Html &lt;figcaption&gt; tag</a>, <a href='/dictionary/Html_%3Cfigure%3E_tag'>Html &lt;figure&gt; tag</a>, <a href='/dictionary/Html_%3Cfooter%3E_tag'>Html &lt;footer&gt; tag</a>, <a href='/dictionary/Html_%3Cform%3E_tag'>Html &lt;form&gt; tag</a>, <a href='/dictionary/Html_%3Ch%3E_tag'>Html &lt;h&gt; tag</a>, <a href='/dictionary/Html_%3Chead%3E_tag'>Html &lt;head&gt; tag</a>, <a href='/dictionary/Html_%3Cheader%3E_tag'>Html &lt;header&gt; tag</a>, <a href='/dictionary/Html_%3Chgroup%3E_tag'>Html &lt;hgroup&gt; tag</a>, <a href='/dictionary/Html_%3Chr_/%3E_tag'>Html &lt;hr /&gt; tag</a>, <a href='/dictionary/Html_%3Ci%3E_tag'>Html &lt;i&gt; tag</a>, <a href='/dictionary/Html_%3Cimg%3E_tag'>Html &lt;img&gt; tag</a>, <a href='/dictionary/Html_%3Cins%3E_tag'>Html &lt;ins&gt; tag</a>, <a href='/dictionary/Html_%3Clabel%3E_tag'>Html &lt;label&gt; tag</a>, <a href='/dictionary/Html_%3Clegend%3E_tag'>Html &lt;legend&gt; tag</a>, <a href='/dictionary/Html_%3Cli%3E_tag'>Html &lt;li&gt; tag</a>, <a href='/dictionary/Html_%3Clink%3E_tag'>Html &lt;link&gt; tag</a>, <a href='/dictionary/Html_%3Cmark%3E_tag'>Html &lt;mark&gt; tag</a>, <a href='/dictionary/Html_%3Cnav%3E_tag'>Html &lt;nav&gt; tag</a>, <a href='/dictionary/Html_%3Col%3E_tag'>Html &lt;ol&gt; tag</a>, <a href='/dictionary/Html_%3Coption%3E_tag'>Html &lt;option&gt; tag</a>, <a href='/dictionary/Html_%3Cp%3E_tag'>Html &lt;p&gt; tag</a>, <a href='/dictionary/Html_%3Cpre%3E_tag'>Html &lt;pre&gt; tag</a>, <a href='/dictionary/Html_%3Cq%3E_tag'>Html &lt;q&gt; tag</a>, <a href='/dictionary/Html_%3Cs%3E_tag'>Html &lt;s&gt; tag</a>, <a href='/dictionary/Html_%3Csection%3E_tag'>Html &lt;section&gt; tag</a>, <a href='/dictionary/Html_%3Cselect%3E_tag'>Html &lt;select&gt; tag</a>, <a href='/dictionary/Html_%3Csource%3E_tag'>Html &lt;source&gt; tag</a>, <a href='/dictionary/Html_%3Cspan%3E_tag'>Html &lt;span&gt; tag</a>, <a href='/dictionary/Html_%3Cstrong%3E_tag'>Html &lt;strong&gt; tag</a>, <a href='/dictionary/Html_%3Cstyle%3E_tag'>Html &lt;style&gt; tag</a>, <a href='/dictionary/Html_%3Csub%3E_tag'>Html &lt;sub&gt; tag</a>, <a href='/dictionary/Html_%3Csup%3E_tag'>Html &lt;sup&gt; tag</a>, <a href='/dictionary/Html_%3Ctable%3E_tag'>Html &lt;table&gt; tag</a>, <a href='/dictionary/Html_%3Ctbody%3E_tag'>Html &lt;tbody&gt; tag</a>, <a href='/dictionary/Html_%3Ctd%3E_tag'>Html &lt;td&gt; tag</a>, <a href='/dictionary/Html_%3Ctfoot%3E_tag'>Html &lt;tfoot&gt; tag</a>, <a href='/dictionary/Html_%3Cth%3E_tag'>Html &lt;th&gt; tag</a>, <a href='/dictionary/Html_%3Cthead%3E_tag'>Html &lt;thead&gt; tag</a>, <a href='/dictionary/Html_%3Ctitle%3E_tag'>Html &lt;title&gt; tag</a>, <a href='/dictionary/Html_%3Ctr%3E_tag'>Html &lt;tr&gt; tag</a>, <a href='/dictionary/Html_%3Cul%3E_tag'>Html &lt;ul&gt; tag</a>, <a href='/dictionary/Html_%3Cvideo%3E_tag'>Html &lt;video&gt; tag</a>, <a href='/dictionary/Html_heading_tag'>Html heading tag</a>, <a href='/dictionary/Html_‹html›_tag'>Html ‹html› tag</a>, <a href='/dictionary/Html_‹iframe›_tag'>Html ‹iframe› tag</a>, <a href='/dictionary/Html_‹input›_tag'>Html ‹input› tag</a>, <a href='/dictionary/Html_‹meta›_tag'>Html ‹meta› tag</a>, <a href='/dictionary/Html_‹script›_tag'>Html ‹script› tag</a>, <a href='/dictionary/Html_‹textarea›_tag'>Html ‹textarea› tag</a></button><button type='button' class='btn btn-light'><b>Subcategory: </b><a href='/dictionary/Block-level_tag'>Block-level tag</a>, <a href='/dictionary/Html_attribute'>Html attribute</a>, <a href='/dictionary/Inline-level_tag'>Inline-level tag</a></button>
+      </div><br/>
+    <div class='container-fluid'>  <a class='btn btn-primary' href="/" role='button'>Home</a>  <a class='btn btn-primary' data-href="/action/edit/HTML_tag" href='placeholder' id='word_edit' role='button'>Edit</a></div></div></main>
+    <footer>
+    <script>
+        document.getElementById("year").innerHTML = new Date().getFullYear();
+    </script>
+    <div class="text-center text-primary">  
+	    <a href="/">plnet.com 2018 - 
+            <script>
+                var CurrentYear = new Date().getFullYear()
+                document.write(CurrentYear)
+            </script>
+        </a>
+	</div> 
+</footer> 
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.2.3/mermaid.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js'></script>
+    <script src="/resource/highlight/highlight.pack.js"></script>
+    <script src="/client/src/app/main.js" type="module"></script>
+  </body>
+</html>

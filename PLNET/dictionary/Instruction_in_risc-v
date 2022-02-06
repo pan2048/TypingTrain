@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+  <head>
+    <!-- Required meta tags -->
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">   
+    <link rel="shortcut icon" href="/resource/img/logo.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="/resource/highlight/styles/vs2015.css">
+    <link rel="stylesheet" href="/resource/custom.css">
+    <title></title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109032729-5"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-109032729-5');
+    </script>
+  </head>
+  <body>
+    <header>
+  <nav class="navbar bg-light bg-light">
+    <a class="navbar-brand" href="/">
+      <img src="/resource/img/logo.png" height="28"/>
+      PLNET
+    </a>
+    <form id="search_form">
+      <input type="text" id="search_text"/>
+      <button type="submit" class="btn btn-primary" id="search_button">Search...</button>
+    </form>
+    <a class="btn btn-primary" href="/login" role="button">Login</a>
+  </nav>
+</header>
+
+    <main><div class='container-fluid' id='dict_container'>
+      <h1><span class='badge badge-primary'>instruction in RISC-V</span></h1>
+      <div class='container-fluid'>
+          <pre id='word_content' style='white-space: pre-wrap;'>Instructions are 32 bits (4 bytes, 1 word) in length and must be stored at word-aligned memory locations. Instructions for the RV64 and RV128 variants are still 32 bits long. 
+RISC-V is a “three address” architecture. The ADD instruction looks like this: 
+```
+ADD x4,x5,x7 # x4 = x5 + x7
+```
+Note that in the RISC-V assembly language, the destination is typically the leftmost operand. 
+
+Here are the instruction formats: 
+Type | Operands | Example
+----- | ----- | ----- 
+R-type instruction | RegD,Reg1,Reg2 | ADD x4,x6,x8 # x4 = x6+x8 
+I-type instruction | RegD,Reg1,Immed-12 | ADDI x4,x6,123 # x4 = x6+123&lt;br&gt;LW x4,8(x6) # x4 = Mem[8+x6]
+S-type instruction | Reg1,Reg2,Immed-12 | SW x4,8(x6) # Mem[8+r6] = x4 (word)
+B-type instruction (a variant of S-type) | Reg1,Reg2,Immed-12 | blt x4,x6,loop # if x4&lt;x6, goto offset(pc)
+U-type instruction | RegD,Immed-20 | LUI x4,0x12AB7 # x4 = value&lt;&lt;12&lt;br&gt;AUIPC x4,0x12AB7 # x4 = (value&lt;&lt;12) + pc
+J-type instruction (a variant of U-type) | RegD,Immed-20 | jal x4,foo # call: pc=offset+pc; x4=ret addr
+
+Here are the instruction encoding: 
+Type | Operands | Encoding
+----- | ----- | ----- 
+R-type instruction | RegD,Reg1,Reg2 | XXXX XXX2 2222 1111 1XXX DDDD DXXX XXXX
+I-type instruction | RegD,Reg1,Immed-12 | VVVV VVVV VVVV 1111 1XXX DDDD DXXX XXXX
+S-type instruction | Reg1,Reg2,Immed-12 | VVVV VVV2 2222 1111 1XXX VVVV VXXX XXXX
+B-type instruction (a variant of S-type) | Reg1,Reg2,Immed-12 | VVVV VVV2 2222 1111 1XXX VVVV VXXX XXXX
+U-type instruction | RegD,Immed-20 | VVVV VVVV VVVV VVVV VVVV DDDD DXXX XXXX
+J-type instruction (a variant of U-type)  | RegD,Immed-20 | VVVV VVVV VVVV VVVV VVVV DDDD DXXX XXXX
+
+DDDDD = RegD 
+11111 = Reg1 
+22222 = Reg2 
+VVVVV = Immediate value 
+XXXXX = Op-code / function code </pre>
+      </div>
+      <div class='btn-group-vertical text-left'>
+    <button type='button' class='btn btn-light'><b>Superconcept: </b><a href='/dictionary/Instruction'>Instruction</a></button><button type='button' class='btn btn-light'><b>Supercategory: </b><a href='/dictionary/Risc-v'>Risc-v</a></button><button type='button' class='btn btn-light'><b>Subconcept: </b><a href='/dictionary/Privileged_instruction_in_risc-v'>Privileged instruction in risc-v</a>, <a href='/dictionary/User-level_instruction_in_risc-v'>User-level instruction in risc-v</a></button>
+      </div><br/>
+    <div class='container-fluid'>  <a class='btn btn-primary' href="/" role='button'>Home</a>  <a class='btn btn-primary' data-href="/action/edit/instruction_in_RISC-V" href='placeholder' id='word_edit' role='button'>Edit</a></div></div></main>
+    <footer>
+    <script>
+        document.getElementById("year").innerHTML = new Date().getFullYear();
+    </script>
+    <div class="text-center text-primary">  
+	    <a href="/">plnet.com 2018 - 
+            <script>
+                var CurrentYear = new Date().getFullYear()
+                document.write(CurrentYear)
+            </script>
+        </a>
+	</div> 
+</footer> 
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.2.3/mermaid.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js'></script>
+    <script src="/resource/highlight/highlight.pack.js"></script>
+    <script src="/client/src/app/main.js" type="module"></script>
+  </body>
+</html>

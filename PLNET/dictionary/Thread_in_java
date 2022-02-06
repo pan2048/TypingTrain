@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+  <head>
+    <!-- Required meta tags -->
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">   
+    <link rel="shortcut icon" href="/resource/img/logo.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="/resource/highlight/styles/vs2015.css">
+    <link rel="stylesheet" href="/resource/custom.css">
+    <title></title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109032729-5"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-109032729-5');
+    </script>
+  </head>
+  <body>
+    <header>
+  <nav class="navbar bg-light bg-light">
+    <a class="navbar-brand" href="/">
+      <img src="/resource/img/logo.png" height="28"/>
+      PLNET
+    </a>
+    <form id="search_form">
+      <input type="text" id="search_text"/>
+      <button type="submit" class="btn btn-primary" id="search_button">Search...</button>
+    </form>
+    <a class="btn btn-primary" href="/login" role="button">Login</a>
+  </nav>
+</header>
+
+    <main><div class='container-fluid' id='dict_container'>
+      <h1><span class='badge badge-primary'>thread in Java</span></h1>
+      <div class='container-fluid'>
+          <pre id='word_content' style='white-space: pre-wrap;'>In Java, &quot;thread&quot; means two different things:
+* An instance of class java.lang.Thread
+* A thread of execution
+
+An instance of Thread is just an object. Like any other object in Java, it has variables and methods, and lives and dies on the heap. 
+But a thread of execution is an individual process (a &quot;lightweight&quot; process) that has its own call stack. In Java, there is one thread per call stack—or, to think of it in reverse, one call stack per thread. Even if you don&#039;t create any new threads in your program, threads are back there running. But as soon as you create a new thread, a new stack materializes and methods called from that thread run in a call stack that&#039;s separate from the main() call stack.
+Java thread can be created by extending the Thread class and overriding its run() method. Another way to create a thread is to implement the Runnable interface: If the class extends the Thread class, the thread can be run by creating an instance of the class and call its start() method. If the class implements the Runnable interface, the thread can be run by passing an instance of the class to a Thread object&#039;s constructor and then calling the thread&#039;s start() method:
+```
+class T1 extends Thread {
+  public void run() {
+    System.out.println(&quot;Thread running 1 &quot;);
+  }
+}
+
+class T2 implements Runnable {
+  public void run() {
+    System.out.println(&quot;Thread running 2&quot;);
+  }
+}
+
+public class Main {
+  public static void main(String[] args) {
+    T1 t1 = new T1();
+    t1.start();
+    Thread t2 = new Thread(new T2());
+    t2.start();
+  }
+}
+```</pre>
+      </div>
+      <div class='btn-group-vertical text-left'>
+    <button type='button' class='btn btn-light'><b>Superconcept: </b><a href='/dictionary/Concurrency_in_java'>Concurrency in java</a>, <a href='/dictionary/Thread'>Thread</a></button><button type='button' class='btn btn-light'><b>Subconcept: </b><a href='/dictionary/System_thread_in_java'>System thread in java</a>, <a href='/dictionary/User-defined_thread_in_java'>User-defined thread in java</a></button><button type='button' class='btn btn-light'><b>Subcategory: </b><a href='/dictionary/Thread_priority_in_java'>Thread priority in java</a>, <a href='/dictionary/Thread_state_in_java'>Thread state in java</a></button>
+      </div><br/>
+    <div class='container-fluid'>  <a class='btn btn-primary' href="/" role='button'>Home</a>  <a class='btn btn-primary' data-href="/action/edit/thread_in_Java" href='placeholder' id='word_edit' role='button'>Edit</a></div></div></main>
+    <footer>
+    <script>
+        document.getElementById("year").innerHTML = new Date().getFullYear();
+    </script>
+    <div class="text-center text-primary">  
+	    <a href="/">plnet.com 2018 - 
+            <script>
+                var CurrentYear = new Date().getFullYear()
+                document.write(CurrentYear)
+            </script>
+        </a>
+	</div> 
+</footer> 
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.2.3/mermaid.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js'></script>
+    <script src="/resource/highlight/highlight.pack.js"></script>
+    <script src="/client/src/app/main.js" type="module"></script>
+  </body>
+</html>
