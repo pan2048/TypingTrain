@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<!-- Required meta tags -->
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="/PLNET/resource/img/logo.png" rel="shortcut icon"/>
+<!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet"/>
+<link href="/PLNET/resource/highlight/styles/vs2015.css" rel="stylesheet"/>
+<link href="/PLNET/resource/custom.css" rel="stylesheet"/>
+<title></title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-109032729-5"></script>
+<script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-109032729-5');
+    </script>
+</head>
+<body>
+<header>
+<nav class="navbar bg-light bg-light">
+<a class="navbar-brand" href="/PLNET/index.html">
+<img height="28" src="/PLNET/resource/img/logo.png"/>
+      PLNET
+    </a>
+
+
+</nav>
+</header>
+<main><div class="container-fluid" id="dict_container">
+<h1><span class="badge badge-primary">load and store instruction in RISC-V</span></h1>
+<div class="container-fluid">
+<pre id="word_content" style="white-space: pre-wrap;">* Load Byte (Signed) 
+    * General Form: LB     RegD,Immed-12(Reg1)
+    * Example: LB     x4,1234(x9)    # x4 = Mem[x9+1234]
+    * Description: An 8-bit value is fetched from memory and moved into register RegD. The memory address is formed by adding the offset to the contents of Reg1. The value is sign-extended to the full length of the register. 
+    * Comment: The target location given by the 12-bit offset must be within the range of -2,048 .. 2,047 relative to the value in Reg1. There is no alignment issue and this instruction will execute atomically. 
+    * Encoding:  This is an I-type instruction.
+* Load Byte (Unsigned) 
+    * General Form: LBU     RegD,Immed-12(Reg1)
+    * Example: LBU     x4,1234(x9)    # x4 = Mem[x9+1234]
+    * Description: An 8-bit value is fetched from memory and moved into register RegD. The memory address is formed by adding the offset to the contents of Reg1. The value is zero-extended to the full length of the register. 
+    * Comment: The target location given by the 12-bit offset must be within the range of -2,048 .. 2,047 relative to the value in Reg1. There is no alignment issue and this instruction will execute atomically. 
+    * Encoding:  This is an I-type instruction. 
+* Load Halfword (Signed) 
+    * General Form: LH     RegD,Immed-12(Reg1)
+    * Example: LH     x4,1234(x9)    # x4 = Mem[x9+1234]
+    * Description: A 16-bit value is fetched from memory and moved into register RegD. The memory address is formed by adding the offset to the contents of Reg1. The value is sign-extended to the full length of the register. 
+    * Comment: The target location given by the 12-bit offset must be within the range of -2,048 .. 2,047 relative to the value in Reg1. The address of the memory location is not required to be properly aligned (i.e. halfword-aligned), but it is assumed that this instruction will execute faster with properly aligned addresses. This instruction is guaranteed to execute atomically if the address is properly aligned. If the address is not aligned, there is no guarantee of atomic operation. 
+    * Encoding:  This is an I-type instruction. 
+* Load Halfword (Unsigned) 
+    * General Form: LHU     RegD,Immed-12(Reg1)
+    * Example: LHU     x4,1234(x9)    # x4 = Mem[x9+1234]
+    * Description: A 16-bit value is fetched from memory and moved into register RegD. The memory address is formed by adding the offset to the contents of Reg1. The value is zero-extended to the full length of the register. 
+    * Comment: The target location given by the 12-bit offset must be within the range of -2,048 .. 2,047 relative to the value in Reg1.The address of the memory location is not required to be properly aligned (i.e. word-aligned), but it is assumed that this instruction will execute faster with properly aligned addresses. This instruction is guaranteed to execute atomically if the address is properly aligned. If the address is not aligned, there is no guarantee of atomic operation. 
+    * Encoding:  This is an I-type instruction.
+* Load Word (Signed) 
+    * General Form: LW     RegD,Immed-12(Reg1)
+    * Example: LW     x4,1234(x9)    # x4 = Mem[x9+1234]
+    * Description: A 32-bit value is fetched from memory and moved into register RegD. The memory address is formed by adding the offset to the contents of Reg1. 
+    * Comment: The target location given by the 12-bit offset must be within the range of -2,048 .. 2,047 relative to the value in Reg1. The address of the memory location is not required to be properly aligned (i.e. word-aligned), but it is assumed that this instruction will execute faster with properly aligned addresses. This instruction is guaranteed to execute atomically if the address is properly aligned. If the address is not aligned, there is no guarantee of atomic operation. 
+    * RV64 / RV128: For a machine with a register width larger than 32-bits, the value is sign-extended to the full length of the register. 
+    * Encoding:  This is an I-type instruction. 
+* Load Word (Unsigned) 
+    * General Form: LWU     RegD,Immed-12(Reg1)
+    * Example: LWU     x4,1234(x9)    # x4 = Mem[x9+1234]
+    * Description: This instruction is only available for 64-bit and 128-bit machines. A 32-bit value is fetched from memory and moved into register RegD. The value is zero-extended to the full length of the register. The memory address is formed by adding the offset to the contents of Reg1. In a machine with 32-bit registers, neither sign-extension nor zero-extension is necessary for value that is already 32 bits wide. Therefore the “signed load” instruction (LW) does the same thing as the “unsigned load” instruction (LWU), making LWU redundant. 
+    * Comment: The target location given by the 12-bit offset must be within the range of -2,048 .. 2,047 relative to the value in Reg1. The address of the memory location is not required to be properly aligned (i.e. word-aligned), but it is assumed that this instruction will execute faster with properly aligned addresses. This instruction is guaranteed to execute atomically if the address is properly aligned. If the address is not aligned, there is no guarantee of atomic operation. 
+    * Encoding:  This is an I-type instruction.
+* Load Doubleword (Signed) 
+    * General Form: LD     RegD,Immed-12(Reg1)
+    * Example: LD     x4,1234(x9)    # x4 = Mem[x9+1234
+    * Description: This instruction is only available for 64-bit and 128-bit machines. A 64-bit value is fetched from memory and moved into register RegD. The memory address is formed by adding the offset to the contents of Reg1. Sign extension occurs for machines with 128-bit registers. 
+    * Comment: The target location given by the 12-bit offset must be within the range of -2,048 .. 2,047 relative to the value in Reg1. The address of the memory location is not required to be properly aligned (i.e. word-aligned), but it is assumed that this instruction will execute faster with properly aligned addresses. This instruction is guaranteed to execute atomically if the address is properly aligned. If the address is not aligned, there is no guarantee of atomic operation. 
+    * Encoding:  This is an I-type instruction.
+* Load Doubleword (Unsigned) 
+    * General Form: LDU     RegD,Immed-12(Reg1)
+    * Example: LDU     x4,1234(x9)    # x4 = Mem[x9+1234]
+    * Description: This instruction is only available for 128-bit machines. A 64-bit value is fetched from memory and moved into register RegD. The value is zero-extended to 128-bits. The memory address is formed by adding the offset to the contents of Reg1. 
+    * Comment: The target location given by the 12-bit offset must be within the range of -2,048 .. 2,047 relative to the value in Reg1. The address of the memory location is not required to be properly aligned (i.e. word-aligned), but it is assumed that this instruction will execute faster with properly aligned addresses. This instruction is guaranteed to execute atomically if the address is properly aligned. If the address is not aligned, there is no guarantee of atomic operation. 
+    * Encoding:  This is an I-type instruction.
+* Load Quadword 
+    * General Form: LQ     RegD,Immed-12(Reg1)
+    * Example: LQ     x4,1234(x9)    # x4 = Mem[x9+1234]
+    * Description: This instruction is only available for 128-bit machines. A 128-bit value is fetched from memory and moved into register RegD. The memory address is formed by adding the offset to the contents of Reg1. 
+    * Comment: The target location given by the 12-bit offset must be within the range of -2,048 .. 2,047 relative to the value in Reg1. The address of the memory location is not required to be properly aligned (i.e. word-aligned), but it is assumed that this instruction will execute faster with properly aligned addresses. This instruction is guaranteed to execute atomically if the address is properly aligned. If the address is not aligned, there is no guarantee of atomic operation. 
+    * Encoding:  This is an I-type instruction. 
+* Store Byte 
+    * General Form: SB     Reg2,Immed-12(Reg1)
+    * Example: SB     x4,1234(x9)    # Mem[x9+1234] = x4
+    * Description: An 8-bit value is copied from register Reg2 to memory. The upper (more signi2icant) bits in Reg2 are ignored. The memory address is formed by adding the offset to the contents of Reg1. 
+    * Comment: The target location given by the 12-bit offset must be within the range of -2,048 .. 2,047 relative to the value in Reg1. There is no alignment issue and this instruction will execute atomically. 
+    * Encoding:  This is an S-type instruction. 
+* Store Halfword 
+    * General Form: SH     Reg2,Immed-12(Reg1)
+    * Example: SH     x4,1234(x9)    # Mem[x9+1234] = x4
+    * Description: A 16-bit value is copied from register Reg2 to memory. The upper (more signi2icant) bits in Reg2 are ignored. The memory address is formed by adding the offset to the contents of Reg1. 
+    * Comment: The target location given by the 12-bit offset must be within the range of -2,048 .. 2,047 relative to the value in Reg1. The address of the memory location is not required to be properly aligned (i.e. halfword-aligned), but it is assumed that this instruction will execute faster with properly aligned addresses. This instruction is guaranteed to execute atomically if the address is properly aligned. If the address is not aligned, there is no guarantee of atomic operation. 
+    * Encoding:  This is an S-type instruction.
+* Store Word 
+    * General Form: SW     Reg2,Immed-12(Reg1)
+    * Example: SW     x4,1234(x9)    # Mem[x9+1234] = x4
+    * Description: A 32-bit value is copied from register Reg2 to memory. The memory address is formed by adding the offset to the contents of Reg1. 
+    * Comment: The target location given by the 12-bit offset must be within the range of -2,048 .. 2,047 relative to the value in Reg1. The address of the memory location is not required to be properly aligned (i.e. word-aligned), but it is assumed that this instruction will execute faster with properly aligned addresses. This instruction is guaranteed to execute atomically if the address is properly aligned. If the address is not aligned, there is no guarantee of atomic operation. 
+    * RV64 / RV128: For a machine with a register width larger than 32-bits, the upper bits of the register are ignored. 
+    * Encoding:  This is an S-type instruction. 
+* Store Doubleword 
+    * General Form: SD     Reg2,Immed-12(Reg1)
+    * Example: SD     x4,1234(x9)    # Mem[x9+1234] = x4
+    * Description: This instruction is only available in 64-bit and 128-bit machines. A 64-bit value is copied from register Reg2 to memory. The memory address is formed by adding the offset to the contents of Reg1. For a 128-bit machine the upper bits of the register are ignored.
+    * Comment: The target location given by the 12-bit offset must be within the range of -2,048 .. 2,047 relative to the value in Reg1. The address of the memory location is not required to be properly aligned (i.e. doubleword-aligned), but it is assumed that this instruction will execute faster with properly aligned addresses. This instruction is guaranteed to execute atomically if the address is properly aligned. If the address is not aligned, there is no guarantee of atomic operation. 
+    * Encoding:  This is an S-type instruction.
+* Store Quadword 
+    * General Form: SQ     Reg2,Immed-12(Reg1)
+    * Example: SQ     x4,1234(x9)    # Mem[x9+1234] = x4
+    * Description: This instruction is only available in 128-bit machines. A 128-bit value is copied from register Reg2 to memory. The memory address is formed by adding the offset to the contents of Reg1. 
+    * Comment: The target location given by the 12-bit offset must be within the range of -2,048 .. 2,047 relative to the value in Reg1. The address of the memory location is not required to be properly aligned (i.e. word-aligned), but it is assumed that this instruction will execute faster with properly aligned addresses. This instruction is guaranteed to execute atomically if the address is properly aligned. If the address is not aligned, there is no guarantee of atomic operation. 
+    * Encoding:  This is an S-type instruction.
+</pre>
+</div>
+<div class="btn-group-vertical text-left">
+<button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/PLNET/dictionary/User-level_instruction_in_risc-v.html">User-level instruction in risc-v</a></button>
+</div><br/>
+<div class="container-fluid"> <a class="btn btn-primary" href="/PLNET/index.html" role="button">Home</a> </div></div></main>
+<footer>
+<script>
+        document.getElementById("year").innerHTML = new Date().getFullYear();
+    </script>
+<div class="text-center text-primary">
+<a href="/PLNET/index.html">plnet.com 2018 - 
+            <script>
+                var CurrentYear = new Date().getFullYear()
+                document.write(CurrentYear)
+            </script>
+</a>
+</div>
+</footer>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.2.3/mermaid.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js"></script>
+<script src="/PLNET/resource/highlight/highlight.pack.js"></script>
+<script src="/PLNET/client/src/app/main.js" type="module"></script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<!-- Required meta tags -->
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="/PLNET/resource/img/logo.png" rel="shortcut icon"/>
+<!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet"/>
+<link href="/PLNET/resource/highlight/styles/vs2015.css" rel="stylesheet"/>
+<link href="/PLNET/resource/custom.css" rel="stylesheet"/>
+<title></title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-109032729-5"></script>
+<script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-109032729-5');
+    </script>
+</head>
+<body>
+<header>
+<nav class="navbar bg-light bg-light">
+<a class="navbar-brand" href="/PLNET/index.html">
+<img height="28" src="/PLNET/resource/img/logo.png"/>
+      PLNET
+    </a>
+
+
+</nav>
+</header>
+<main><div class="container-fluid" id="dict_container">
+<h1><span class="badge badge-primary">arithmetic instruction in RISC-V</span></h1>
+<div class="container-fluid">
+<pre id="word_content" style="white-space: pre-wrap;">* Add Immediate 
+    * General Form: ADDI   RegD,Reg1,Immed-12
+    * Example: ADDI   x4,x9,123    # x4 = x9 + 0x0000007B
+    * Description: The immediate value (a sign-extended 12-bit value, i.e., -2,048 .. +2,047) is added to the contents of Reg1 and the result is placed in RegD. 
+    * Comments: There is no “subtract immediate” instruction because subtraction is equivalent to adding a negative value. 
+    * Encoding: This is an I-type instruction. 
+* Add Immediate Word 
+    * General Form: ADDIW   RegD,Reg1,Immed-12
+    * Example: ADDIW   x4,x9,123       # x4 = x9 + 0x0000007B
+    * Description: This instruction is only present in 64-bit and 128-bit machines. The operation is performed using 32-bit arithmetic. 
+The immediate value (a sign-extended 12-bit value, i.e., -2,048 .. +2,047) is added to the contents of Reg1. The result is then truncated to 32-bits, signed-extended to 64 or 128 bits and placed in RegD. 
+    * Encoding: This is an I-type instruction. 
+* Add Immediate Double 
+    * General Form: ADDID   RegD,Reg1,Immed-12
+    * Example: ADDID   x4,x9,123       # x4 = x9 + 0x0000007B
+    * Description: This instruction is only present in 128-bit machines. The operation is performed using 64-bit arithmetic. 
+The immediate value (a sign-extended 12-bit value, i.e., -2,048 .. +2,047) is added to the contents of Reg1. The result is then truncated to 64-bits, signed-extended to 128 bits and placed in RegD. 
+    * Encoding: This is an I-type instruction.
+* Add 
+    * General Form: ADD    RegD,Reg1,Reg2
+    * Example: ADD    x4,x9,x13     # x4 = x9+x13
+    * Description: The contents of Reg1 is added to the contents of Reg2 and the result is placed in RegD. 
+    * Comments: There is no distinction between signed and unsigned. Overflow is ignored. 
+    * Encoding:  This is an R-type instruction. 
+* Add Word 
+    * General Form: ADDW    RegD,Reg1,Reg2
+    * Example: ADDW    x4,x9,x13     # x4 = x9+x13
+    * Description: The contents of Reg1 is added to the contents of Reg2 and the result is placed in RegD. 
+    * RV32 / RV64 / RV128: This instruction is only present in 64-bit and 128-bit machines. The operation is performed using 32-bit arithmetic.
+    * Comments: There is no distinction between signed and unsigned. Overflow beyond 32-bits is ignored. The 32-bit result is sign-extended to fill the upper bits of the destination register. 
+    * Encoding:  This is an R-type instruction. 
+* Add Double 
+    * General Form: ADDD    RegD,Reg1,Reg2
+    * Example: ADDD    x4,x9,x13     # x4 = x9+x13
+    * Description: The contents of Reg1 is added to the contents of Reg2 and the result is placed in RegD. 
+    * RV32 / RV64 / RV128: This instruction is only present in 128-bit machines. The operation is performed using 64-bit arithmetic. 
+    * Comments:There is no distinction between signed and unsigned. Overflow beyond 64-bits is ignored. The 64-bit result is sign-extended to fill the upper bits of the destination register. 
+    * Encoding:  This is an R-type instruction.
+* Subtract 
+    * General Form: SUB    RegD,Reg1,Reg2
+    * Example: SUB    x4,x9,x13     # x4 = x9-x13
+    * Description: The contents of Reg2 is subtracted from the contents of Reg1 and the result is placed in RegD. 
+    * Comments: There is no distinction between signed and unsigned. Overflow is ignored. 
+    * Encoding:  This is an R-type instruction.
+* Subtract Word 
+    * General Form: SUBW    RegD,Reg1,Reg2
+    * Example: SUBW    x4,x9,x13     # x4 = x9-x13
+    * Description: The contents of Reg2 is subtracted from the contents of Reg1 and the result is placed in RegD. 
+    * RV32 / RV64 / RV128: This instruction is only present in 64-bit and 128-bit machines. The operation is performed using 32-bit arithmetic.
+    * Comments: There is no distinction between signed and unsigned. Overflow beyond 32-bits is ignored. The 32-bit result is sign-extended to fill the upper bits of the destination register. 
+    * Encoding:  This is an R-type instruction. 
+* Subtract Double 
+    * General Form: SUBD    RegD,Reg1,Reg2
+    * Example: SUBD    x4,x9,x13     # x4 = x9-x13
+    * Description: The contents of Reg2 is subtracted from the contents of Reg1 and the result is placed in RegD. 
+    * RV32 / RV64 / RV128: This instruction is only present in 128-bit machines. The operation is performed using 64-bit arithmetic. 
+    * Comments: There is no distinction between signed and unsigned. Overflow beyond 64-bits is ignored. The 64-bit result is sign-extended to fill the upper bits of the destination register. 
+    * Encoding:  This is an R-type instruction. 
+* Sign Extend Word to Doubleword 
+    * General Form: SEXT.W   RegD,Reg1
+    * Example: SEXT.W   x4,x9       # x4 = Sign-extend(x9)
+    * Description: This instruction is only available for 64-bit and 128-bit machines. 
+The value in the lower 32 bits of Reg1 is signed-extended to 64 or 128 bits and placed in RegD. 
+    * Comments: This instruction is useful when a 32-bit signed value must be “coerced” to a larger value on 64-bit and 128-bit machine. 
+    * Encoding: This is a special case of a more general instruction. This instruction is assembled identically to: 
+ADDIW   RegD,Reg1,0
+* Sign Extend Doubleword to Quadword 
+    * General Form: SEXT.D   RegD,Reg1
+    * Example: SEXT.D   x4,x9       # x4 = Sign-extend(x9)
+    * Description: This instruction is only available for 128-bit machines. 
+The value in the lower 64 bits of Reg1 is signed-extended to 128 bits and placed in RegD. 
+    * Encoding: This is a special case of a more general instruction. This instruction is assembled identically to: 
+ADDID   RegD,Reg1,0
+* Negate 
+    * General Form: NEG    RegD,Reg2
+    * Example: NEG    x4,x9        # x4 = -x9
+    * Description: The contents of Reg2 is arithmetically negated and the result is placed in RegD. 
+    * Comments: The result is computed by subtraction from zero. Overflow can only occur when the most negative value is negated. Overflow is ignored. 
+    * Encoding: This is a special case of a more general instruction. This instruction is assembled identically to: 
+SUB   RegD,x0,Reg2
+* Negate Word 
+    * General Form: NEGW    RegD,Reg2
+    * Example: NEGW    x4,x9        # x4 = -x9
+    * Description: The contents of Reg2 is arithmetically negated and the result is placed in RegD.  
+    * RV64 / RV 128: This instruction is only present in 64-bit and 128-bit machines. The operation is performed using 32-bit arithmetic, whereas the NEG instruction operates on 64-bit or 128-bit quantities in the larger machines. 
+    * Encoding: This is a special case of a more general instruction. This instruction is assembled identically to: 
+SUBW   RegD,x0,Reg2
+* Negate Doubleword 
+    * General Form: NEGD    RegD,Reg2
+    * Example: NEGD    x4,x9        # x4 = -x9
+    * Description: The contents of Reg2 is arithmetically negated and the result is placed in RegD.  
+    * RV64 / RV 128: This instruction is only present in 128-bit machines. The operation is performed using 64-bit arithmetic. 
+    * Encoding: This is a special case of a more general instruction. This instruction is assembled identically to: 
+SUBD   RegD,x0,Reg2</pre>
+</div>
+<div class="btn-group-vertical text-left">
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/PLNET/dictionary/Arithmetic_instruction.html">Arithmetic instruction</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/PLNET/dictionary/User-level_instruction_in_risc-v.html">User-level instruction in risc-v</a></button>
+</div><br/>
+<div class="container-fluid"> <a class="btn btn-primary" href="/PLNET/index.html" role="button">Home</a> </div></div></main>
+<footer>
+<script>
+        document.getElementById("year").innerHTML = new Date().getFullYear();
+    </script>
+<div class="text-center text-primary">
+<a href="/PLNET/index.html">plnet.com 2018 - 
+            <script>
+                var CurrentYear = new Date().getFullYear()
+                document.write(CurrentYear)
+            </script>
+</a>
+</div>
+</footer>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.2.3/mermaid.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js"></script>
+<script src="/PLNET/resource/highlight/highlight.pack.js"></script>
+<script src="/PLNET/client/src/app/main.js" type="module"></script>
+</body>
+</html>

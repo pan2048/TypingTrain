@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<!-- Required meta tags -->
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="/PLNET/resource/img/logo.png" rel="shortcut icon"/>
+<!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet"/>
+<link href="/PLNET/resource/highlight/styles/vs2015.css" rel="stylesheet"/>
+<link href="/PLNET/resource/custom.css" rel="stylesheet"/>
+<title></title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-109032729-5"></script>
+<script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-109032729-5');
+    </script>
+</head>
+<body>
+<header>
+<nav class="navbar bg-light bg-light">
+<a class="navbar-brand" href="/PLNET/index.html">
+<img height="28" src="/PLNET/resource/img/logo.png"/>
+      PLNET
+    </a>
+
+
+</nav>
+</header>
+<main><div class="container-fluid" id="dict_container">
+<h1><span class="badge badge-primary">string literal in C</span></h1>
+<div class="container-fluid">
+<pre id="word_content" style="white-space: pre-wrap;">In C, a string literal is a string of characters enclosed in double quotes, such as "a computer".
+String literals are stored in C as an array of chars, terminted by a null byte. A null byte is a char having a value of exactly zero, noted as '\0'. Do not confuse the null byte, '\0', with the character '0', the integer 0, the double 0.0, or the pointer NULL.
+String literals may contain as few as one or even zero characters. Do not confuse a single-character string literal, e.g. "A" with a character constant, 'A'. The former is actually two characters, because of the terminating null byte stored at the end.
+An empty string, "", consists of only the null byte, and is considered to have a string length of zero, because the terminating null byte does not count when determining string lengths.
+String literals may contain any valid characters, including escape sequences such as \n, \t, etc. Octal and hexadecimal escape sequences are technically legal in string literals, but not as commonly used as they are in character constants, and have some potential problems of running on into following text.
+
+</pre>
+</div>
+<div class="btn-group-vertical text-left">
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/PLNET/dictionary/String_in_c.html">String in c</a>, <a href="/PLNET/dictionary/String_literal.html">String literal</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/PLNET/dictionary/Escape_sequence_in_c.html">Escape sequence in c</a></button>
+</div><br/>
+<div class="container-fluid"> <a class="btn btn-primary" href="/PLNET/index.html" role="button">Home</a> </div></div></main>
+<footer>
+<script>
+        document.getElementById("year").innerHTML = new Date().getFullYear();
+    </script>
+<div class="text-center text-primary">
+<a href="/PLNET/index.html">plnet.com 2018 - 
+            <script>
+                var CurrentYear = new Date().getFullYear()
+                document.write(CurrentYear)
+            </script>
+</a>
+</div>
+</footer>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.2.3/mermaid.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js"></script>
+<script src="/PLNET/resource/highlight/highlight.pack.js"></script>
+<script src="/PLNET/client/src/app/main.js" type="module"></script>
+</body>
+</html>

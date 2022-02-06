@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<!-- Required meta tags -->
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="/PLNET/resource/img/logo.png" rel="shortcut icon"/>
+<!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet"/>
+<link href="/PLNET/resource/highlight/styles/vs2015.css" rel="stylesheet"/>
+<link href="/PLNET/resource/custom.css" rel="stylesheet"/>
+<title></title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-109032729-5"></script>
+<script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-109032729-5');
+    </script>
+</head>
+<body>
+<header>
+<nav class="navbar bg-light bg-light">
+<a class="navbar-brand" href="/PLNET/index.html">
+<img height="28" src="/PLNET/resource/img/logo.png"/>
+      PLNET
+    </a>
+
+
+</nav>
+</header>
+<main><div class="container-fluid" id="dict_container">
+<h1><span class="badge badge-primary">generic programming</span></h1>
+<div class="container-fluid">
+<pre id="word_content" style="white-space: pre-wrap;">It’s more useful, and considerably more flexible, to write a single function or a single type of any type. Generic code enables you to write such a function or a type. 
+
+C# Generics allow you to declare something like this.
+```
+List&lt;Person&gt; foo = new List&lt;Person&gt;();
+```
+and then the compiler will prevent you from putting things that aren't Person into the list.
+Behind the scenes the C# compiler is just putting List&lt;Person&gt; into the .NET dll file, but at runtime the JIT compiler goes and builds a new set of code, as if you had written a special list class just for containing people - something like ListOfPerson.
+The benefit of this is that it makes it really fast. There's no casting or any other stuff, and because the dll contains the information that this is a List of Person, other code that looks at it later on using reflection can tell that it contains Person objects (so you get intellisense and so on).
+The downside of this is that old C# 1.0 and 1.1 code (before they added generics) doesn't understand these new List&lt;something&gt;, so you have to manually convert things back to plain old List to interoperate with them. This is not that big of a problem, because C# 2.0 binary code is not backwards compatible. The only time this will ever happen is if you're upgrading some old C# 1.0/1.1 code to C# 2.0
+Java Generics allow you to declare something like this.
+```
+ArrayList&lt;Person&gt; foo = new ArrayList&lt;Person&gt;();
+```
+On the surface it looks the same, and it sort-of is. The compiler will also prevent you from putting things that aren't Person into the list.
+The difference is what happens behind the scenes. Unlike C#, Java does not go and build a special ListOfPerson - it just uses the plain old ArrayList which has always been in Java. When you get things out of the array, the usual Person p = (Person)foo.get(1); casting-dance still has to be done. The compiler is saving you the key-presses, but the speed hit/casting is still incurred just like it always was.
+When people mention "Type Erasure" this is what they're talking about. The compiler inserts the casts for you, and then 'erases' the fact that it's meant to be a list of Person not just Object
+The benefit of this approach is that old code which doesn't understand generics doesn't have to care. It's still dealing with the same old ArrayList as it always has. This is more important in the java world because they wanted to support compiling code using Java 5 with generics, and having it run on old 1.4 or previous JVM's, which microsoft deliberately decided not to bother with.
+The downside is the speed hit I mentioned previously, and also because there is no ListOfPerson pseudo-class or anything like that going into the .class files, code that looks at it later on (with reflection, or if you pull it out of another collection where it's been converted into Object or so on) can't tell in any way that it's meant to be a list containing only Person and not just any other array list.
+C++ Templates allow you to declare something like this
+```
+std::list&lt;Person&gt;* foo = new std::list&lt;Person&gt;();
+```
+It looks like C# and Java generics, and it will do what you think it should do, but behind the scenes different things are happening.
+It has the most in common with C# generics in that it builds special pseudo-classes rather than just throwing the type information away like java does, but it's a whole different kettle of fish.
+Both C# and Java produce output which is designed for virtual machines. If you write some code which has a Person class in it, in both cases some information about a Person class will go into the .dll or .class file, and the JVM/CLR will do stuff with this.
+C++ produces raw x86 binary code. Everything is not an object, and there's no underlying virtual machine which needs to know about a Person class. There's no boxing or unboxing, and functions don't have to belong to classes, or indeed anything.
+Because of this, the C++ compiler places no restrictions on what you can do with templates - basically any code you could write manually, you can get templates to write for you.
+The most obvious example is adding things:
+In C# and Java, the generics system needs to know what methods are available for a class, and it needs to pass this down to the virtual machine. The only way to tell it this is by either hard-coding the actual class in, or using interfaces. For example:
+```
+string addNames&lt;T&gt;( T first, T second ) { return first.Name() + second.Name(); }
+```
+That code won't compile in C# or Java, because it doesn't know that the type T actually provides a method called Name(). You have to tell it - in C# like this:
+```
+interface IHasName{ string Name(); };
+string addNames&lt;T&gt;( T first, T second ) where T : IHasName { .... }
+```
+And then you have to make sure the things you pass to addNames implement the IHasName interface and so on. The java syntax is different (&lt;T extends IHasName&gt;), but it suffers from the same problems.
+The 'classic' case for this problem is trying to write a function which does this
+```
+string addNames&lt;T&gt;( T first, T second ) { return first + second; }
+```
+You can't actually write this code because there are no ways to declare an interface with the + method in it. You fail.
+C++ suffers from none of these problems. The compiler doesn't care about passing types down to any VM's - if both your objects have a .Name() function, it will compile. If they don't, it won't. Simple.</pre>
+</div>
+<div class="btn-group-vertical text-left">
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/PLNET/dictionary/Programming_paradigm.html">Programming paradigm</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/PLNET/dictionary/Generic_in_java.html">Generic in java</a>, <a href="/PLNET/dictionary/Generic_in_kotlin.html">Generic in kotlin</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/PLNET/dictionary/Generic_function.html">Generic function</a>, <a href="/PLNET/dictionary/Type_parameter.html">Type parameter</a>, <a href="/PLNET/dictionary/Variance.html">Variance</a></button>
+</div><br/>
+<div class="container-fluid"> <a class="btn btn-primary" href="/PLNET/index.html" role="button">Home</a> </div></div></main>
+<footer>
+<script>
+        document.getElementById("year").innerHTML = new Date().getFullYear();
+    </script>
+<div class="text-center text-primary">
+<a href="/PLNET/index.html">plnet.com 2018 - 
+            <script>
+                var CurrentYear = new Date().getFullYear()
+                document.write(CurrentYear)
+            </script>
+</a>
+</div>
+</footer>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.2.3/mermaid.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js"></script>
+<script src="/PLNET/resource/highlight/highlight.pack.js"></script>
+<script src="/PLNET/client/src/app/main.js" type="module"></script>
+</body>
+</html>

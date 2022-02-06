@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<!-- Required meta tags -->
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="/PLNET/resource/img/logo.png" rel="shortcut icon"/>
+<!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet"/>
+<link href="/PLNET/resource/highlight/styles/vs2015.css" rel="stylesheet"/>
+<link href="/PLNET/resource/custom.css" rel="stylesheet"/>
+<title></title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-109032729-5"></script>
+<script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-109032729-5');
+    </script>
+</head>
+<body>
+<header>
+<nav class="navbar bg-light bg-light">
+<a class="navbar-brand" href="/PLNET/index.html">
+<img height="28" src="/PLNET/resource/img/logo.png"/>
+      PLNET
+    </a>
+
+
+</nav>
+</header>
+<main><div class="container-fluid" id="dict_container">
+<h1><span class="badge badge-primary">integer multiply and divide instruction in RISC-V</span></h1>
+<div class="container-fluid">
+<pre id="word_content" style="white-space: pre-wrap;">* Multiply 
+    * General Form: MUL     RegD,Reg1,Reg2
+    * Example: MUL     x4,x9,x13     # x4 = x9*x13
+    * Description: The contents of Reg1 is multiplied by the contents of Reg2 and the result is placed in RegD.
+    * RV32 / RV64 / RV128: Regardless of the size of the registers, the result of their multiplication will be twice as large, and therefore require 2 registers to contain. This instruction captures the lower-order half of the result and moves it into the destination register. See the commentary and the other multiply instructions for the upper half. 
+    * Comments: There is no distinction between signed and unsigned; the result is identical. Over2low is ignored.  
+    * Encoding:  This is an R-type instruction. 
+* Multiply – High Bits (Signed) 
+    * General Form: MULH    RegD,Reg1,Reg2
+    * Example: MULH    x4,x9,x13     # x4 = HighBits(x9*x13)
+    * Description: The contents of Reg1 is multiplied by the contents of Reg2 and the most-signi2icant half of the result is placed in RegD. Both operands and the result are interpreted as signed values. 
+    * Encoding: This is a R-type instruction. 
+* Multiply – High Bits (Unsigned) 
+    * General Form: MULHU   RegD,Reg1,Reg2
+    * Example: MULHU   x4,x9,x13     # x4 = HighBits(x9*x13)
+    * Description: The contents of Reg1 is multiplied by the contents of Reg2 and the most-signi2icant half of the result is placed in RegD. Both operands and the result are interpreted as unsigned values. 
+    * Encoding:  This is an R-type instruction. 
+* Multiply – High Bits (Signed and Unsigned) 
+    * General Form: MULHSU  RegD,Reg1,Reg2
+    * Example: MULHSU  x4,x9,x13     # x4 = HighBits(x9*x13)
+    * Description: The contents of Reg1 is multiplied by the contents of Reg2 and the most-signi2icant half of the result is placed in RegD. One operand is interpreted as signed and one operand is interpreted as unsigned and the result is interpreted as a signed value. The spec suggests that: Reg2 = multiplier = signed Reg1 = multiplicand = unsigned but this interpretation is also a possibility ??? Reg2 = multiplier = unsigned Reg1= multiplicand = signed 
+    * Encoding:  This is an R-type instruction.
+* Multiply Word 
+    * General Form: MULW    RegD,Reg1,Reg2
+    * Example: MULW    x4,x9,x13     # x4 = x9*x13
+    * Description: The contents of Reg1 is multiplied by the contents of Reg2 and the result is placed in RegD. Only the lower order 32-bits of the result are used; the lower 32 bits are signed extended to the full length of the register. 
+    * Comment: This instruction is used to properly emulate 32-bit multiplication on a 64-bit or 128-bit machine. Note that only the least-signi2icant 32 bits of Reg1 and Reg2 can possibly affect the result. If you want the upper 32-bits of the full 64-bit result use the MUL instruction on a 64-bit machine. 
+    * RV32/RV64/RV128: This instruction is only available on 64-bit and 128-bit machines. 
+    * Encoding:  This is an R-type instruction. 
+* Divide (Signed) 
+    * General Form: DIV     RegD,Reg1,Reg2
+    * Example: DIV     x4,x9,x13     # x4 = x9 DIV x13
+    * Description: The contents of Reg1 is divided by the contents of Reg2 and the quotient is placed in RegD. Both operands and the result are signed values. 
+    * Comments: Divide-by-zero and division-over2low result in mathematically incorrect results. See discussion above. 
+    * Encoding:  This is an R-type instruction. 
+* Divide (Unsigned) 
+    * General Form: DIVU    RegD,Reg1,Reg2
+    * Example: DIVU    x4,x9,x13     # x4 = x9 DIV x13
+    * Description: The contents of Reg1 is divided by the contents of Reg2 and the quotient is placed in RegD. Both operands and the result are unsigned values. 
+    * Comments: Divide-by-zero produces a mathematically incorrect result. Division-over2low cannot occur. See discussion above. 
+    * Encoding:  This is an R-type instruction. 
+* Remainder (Signed) 
+    * General Form: REM     RegD,Reg1,Reg2
+    * Example: REM     x4,x9,x13     # x4 = x9 REM x13
+    * Description: The contents of Reg1 is divided by the contents of Reg2 and the remainder is placed in RegD. Both operands and the result are signed values. 
+    * Comments: Divide-by-zero and division-over2low result in mathematically incorrect results. See discussion above. 
+    * Encoding:  This is an R-type instruction.
+* Remainder (Unsigned) 
+    * General Form: REMU    RegD,Reg1,Reg2
+    * Example: REMU    x4,x9,x13     # x4 = x9 REM x13
+    * Description: The contents of Reg1 is divided by the contents of Reg2 and the remainder is placed in RegD. Both operands and the result are unsigned values. 
+    * Comments: Divide-by-zero produces a mathematically incorrect result. Division-over2low cannot occur. See discussion above. 
+    * Encoding:  This is an R-type instruction.
+* Divide Word (Signed) 
+    * General Form: DIVW    RegD,Reg1,Reg2
+    * Example: DIVW    x4,x9,x13     # x4 = x9 DIV x13
+    * RV32/RV64/RV128: This instruction is only available on 64-bit and 128-bit machines. 
+    * Description: The contents of Reg1 is divided by the contents of Reg2 and the quotient is placed in RegD. Both operands and the result are signed values. Only the low-order 32 bits of the operands are used and the 32-bit result is signed-extended to 2ill the destination register. 
+    * Comments: Divide-by-zero and division-over2low result in mathematically incorrect results. See discussion above. 
+    * Encoding:  This is an R-type instruction. 
+* Divide Word (Unsigned) 
+    * General Form: DIVUW   RegD,Reg1,Reg2
+    * Example: DIVUW   x4,x9,x13     # x4 = x9 DIV x13
+    * RV32/RV64/RV128: This instruction is only available on 64-bit and 128-bit machines. 
+    * Description: The contents of Reg1 is divided by the contents of Reg2 and the quotient is placed in RegD. Both operands and the result are unsigned values. Only the low-order 32 bits of the operands are used and the 32-bit result is signed-extended (???) to 2ill the destination register. 
+    * Comments: Divide-by-zero produces a mathematically incorrect result. Division-over2low cannot occur. See discussion above. 
+    * Encoding:  This is an R-type instruction.
+* Remainder Word (Signed) 
+    * General Form: REMW    RegD,Reg1,Reg2
+    * Example: REMW    x4,x9,x13     # x4 = x9 REM x13
+    * RV32/RV64/RV128: This instruction is only available on 64-bit and 128-bit machines. 
+    * Description: The contents of Reg1 is divided by the contents of Reg2 and the remainder is placed in RegD. Both operands and the result are signed values. Only the low-order 32 bits of the operands are used and the 32-bit result is signed-extended to 2ill the destination register. 
+    * Comments: Divide-by-zero and division-over2low result in mathematically incorrect results. See discussion above. 
+    * Encoding:  This is an R-type instruction.
+* Remainder Word (Unsigned) 
+    * General Form: REMUW   RegD,Reg1,Reg2
+    * Example: REMUW   x4,x9,x13     # x4 = x9 REM x13
+    * RV32/RV64/RV128: This instruction is only available on 64-bit and 128-bit machines. 
+    * Description: The contents of Reg1 is divided by the contents of Reg2 and the remainder is placed in RegD. Both operands and the result are unsigned values. Only the low-order 32 bits of the operands are used and the 32-bit result is signed-extended (???) to 2ill the destination register. 
+    * Comments: Divide-by-zero produces a mathematically incorrect result. Division-over2low cannot occur. See discussion above. 
+    * Encoding:  This is an R-type instruction.
+</pre>
+</div>
+<div class="btn-group-vertical text-left">
+<button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/PLNET/dictionary/User-level_instruction_in_risc-v.html">User-level instruction in risc-v</a></button>
+</div><br/>
+<div class="container-fluid"> <a class="btn btn-primary" href="/PLNET/index.html" role="button">Home</a> </div></div></main>
+<footer>
+<script>
+        document.getElementById("year").innerHTML = new Date().getFullYear();
+    </script>
+<div class="text-center text-primary">
+<a href="/PLNET/index.html">plnet.com 2018 - 
+            <script>
+                var CurrentYear = new Date().getFullYear()
+                document.write(CurrentYear)
+            </script>
+</a>
+</div>
+</footer>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.2.3/mermaid.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js"></script>
+<script src="/PLNET/resource/highlight/highlight.pack.js"></script>
+<script src="/PLNET/client/src/app/main.js" type="module"></script>
+</body>
+</html>

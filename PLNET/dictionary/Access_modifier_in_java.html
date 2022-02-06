@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<!-- Required meta tags -->
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="/PLNET/resource/img/logo.png" rel="shortcut icon"/>
+<!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet"/>
+<link href="/PLNET/resource/highlight/styles/vs2015.css" rel="stylesheet"/>
+<link href="/PLNET/resource/custom.css" rel="stylesheet"/>
+<title></title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-109032729-5"></script>
+<script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-109032729-5');
+    </script>
+</head>
+<body>
+<header>
+<nav class="navbar bg-light bg-light">
+<a class="navbar-brand" href="/PLNET/index.html">
+<img height="28" src="/PLNET/resource/img/logo.png"/>
+      PLNET
+    </a>
+
+
+</nav>
+</header>
+<main><div class="container-fluid" id="dict_container">
+<h1><span class="badge badge-primary">access modifier in Java</span></h1>
+<div class="container-fluid">
+<pre id="word_content" style="white-space: pre-wrap;">There are four access controls in Java but only three access modifiers. The fourth access control level (called default or package access) is what you get when you don't use any of the three access modifiers. Every class, method, and instance variable has an access control, whether you explicitly type one or not. An access modifier can not be applied to a local variable.
+name |keyword | maximal access |
+---- | --- | --- |
+private | private | within the same class |
+package| - | within its package |
+protected | protected | derived classes via inheritance or within same package |
+public | public | public |
+
+There are two different access issues:
+* Whether method code in one class can access a member of another class
+* Whether a subclass can inherit a member of its superclass
+
+&lt;b&gt;Class:&lt;/b&gt;
+A class can be declared with only public or default access; the other two access control levels don't make sense for a class. If you want the class used only in its package, use default access; otherwise make it public.
+Never use a protected class. Protected class member (method or variable) is just like package-private (default visibility), except that it also can be accessed from subclasses.
+Since there's no such concept as 'subpackage' or 'package-inheritance' in Java, declaring class protected or package-private would be the same thing. You can declare nested and inner classes as protected, though.
+Private classes are allowed, but only as inner or nested classes. If you have a private inner or nested class, then access is restricted to the scope of that outer class. If you have a private class on its own as a top-level class, then you can't get access to it from anywhere. So it does not make sense to have a top level private class.
+
+&lt;b&gt;Class Members:&lt;/b&gt;
+| Visibility | Public | Protected | Default | Private |
+| --- | --- | --- | --- | --- |
+| From the same class | Yes| Yes| Yes| Yes|
+| From any class in the same package | Yes| Yes| Yes| No|
+| From a sub-class in the same package | Yes| Yes| Yes| No|
+| From a sub-class outside the same package | Yes| Yes, through inheritance | No| No|
+| From any non-sub-class outside the same package | Yes| No | No| No|
+
+Note you can access a private variable from main method. Because Main is a part of you class, you have declared it inside your class. What main is not is part of your object, it will not be any part of the objects you create from the class but it is still part of the class. This is correct for any static function as main is just a normal static function that the framework knows it should look for when the program is executed.
+
+
+
+
+
+</pre>
+</div>
+<div class="btn-group-vertical text-left">
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/PLNET/dictionary/Access_modifier.html">Access modifier</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/PLNET/dictionary/Modifier_in_java.html">Modifier in java</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/PLNET/dictionary/Private_keyword_in_java.html">Private keyword in java</a>, <a href="/PLNET/dictionary/Protected_keyword_in_java.html">Protected keyword in java</a>, <a href="/PLNET/dictionary/Public_keyword_in_java.html">Public keyword in java</a></button>
+</div><br/>
+<div class="container-fluid"> <a class="btn btn-primary" href="/PLNET/index.html" role="button">Home</a> </div></div></main>
+<footer>
+<script>
+        document.getElementById("year").innerHTML = new Date().getFullYear();
+    </script>
+<div class="text-center text-primary">
+<a href="/PLNET/index.html">plnet.com 2018 - 
+            <script>
+                var CurrentYear = new Date().getFullYear()
+                document.write(CurrentYear)
+            </script>
+</a>
+</div>
+</footer>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.2.3/mermaid.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js"></script>
+<script src="/PLNET/resource/highlight/highlight.pack.js"></script>
+<script src="/PLNET/client/src/app/main.js" type="module"></script>
+</body>
+</html>

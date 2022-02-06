@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<!-- Required meta tags -->
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="/PLNET/resource/img/logo.png" rel="shortcut icon"/>
+<!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet"/>
+<link href="/PLNET/resource/highlight/styles/vs2015.css" rel="stylesheet"/>
+<link href="/PLNET/resource/custom.css" rel="stylesheet"/>
+<title></title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-109032729-5"></script>
+<script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-109032729-5');
+    </script>
+</head>
+<body>
+<header>
+<nav class="navbar bg-light bg-light">
+<a class="navbar-brand" href="/PLNET/index.html">
+<img height="28" src="/PLNET/resource/img/logo.png"/>
+      PLNET
+    </a>
+
+
+</nav>
+</header>
+<main><div class="container-fluid" id="dict_container">
+<h1><span class="badge badge-primary">module in Java</span></h1>
+<div class="container-fluid">
+<pre id="word_content" style="white-space: pre-wrap;"> A Java module is a packaging mechanism that enables you to package a Java application or Java API as a modular JAR file. A Java module can specify which Java packages should be visible to other Java modules. A Java module must also specify which other Java modules is requires to do its job. 
+Java modules is a new feature in Java 9 via the Java Platform Module System (JPMS). The Java Platform Module System is also sometimes referred to as Java Jigsaw or Project Jigsaw. 
+&lt;b&gt;Java module benefits&lt;/b&gt;
+* Smaller application distributables via the modular Java platform. All the Java Platform APIs have been split up into separate modules. The benefit of splitting all the Java APIs up into modules is that you can now specify what modules of the Java platform your application requires. 
+* Encapsulation of internal packages. A Java module must explicitly tell which Java packages inside the module are to be exported (visible).
+* From Java 9, Java applications must be packaged as Java modules. Therefore the Java VM can check the whole module dependency graph when the Java VM starts up. If any required modules are not found at startup, the Java VM reports the missing module and shuts down. 
+
+```
+module com.jenkov.mymodule {
+    exports com.jenkov.mymodule;
+    exports com.jenkov.mymodule.util;
+
+    requires javafx.graphics;
+}
+```
+To compile a Java module.
+```
+javac -d out --module-source-path src/main/java --module com.jenkov.mymodule
+```
+We should remember the following important points about Java 9 Module:
+* We can create our own modules.  Each Module can have any number of Packages and Types. One Module can dependent on any number of modules. Each module has a unique Name.
+* Each module has some description in one and only one source file called “module-info.java”, also known as “Module Descriptor”. A Module Descriptor is a Java file. It is not an XML, Text file or Properties file. Module Descriptor file is placed in the top level directory of a Module. 
+* It is not allowed to have circular dependencies between modules.
+* The same Java package can only be exported by a single Java module at runtime. In other words, you cannot have two (or more) modules that export the same package in use at the same time. The Java VM will complain at startup if you do. 
+* In Java 9 you can still use the -classpath argument to the Java VM when running an application. On the classpath you can include all your older Java classes, just like you have done before Java 9. All classes found on the classpath will be included in what Java calls the unnamed module. Your own named modules cannot use it, because named modules cannot read classes from the unnamed module. 
+</pre>
+</div>
+<div class="btn-group-vertical text-left">
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/PLNET/dictionary/Namespace.html">Namespace</a></button><button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/PLNET/dictionary/Java.html">Java</a></button>
+</div><br/>
+<div class="container-fluid"> <a class="btn btn-primary" href="/PLNET/index.html" role="button">Home</a> </div></div></main>
+<footer>
+<script>
+        document.getElementById("year").innerHTML = new Date().getFullYear();
+    </script>
+<div class="text-center text-primary">
+<a href="/PLNET/index.html">plnet.com 2018 - 
+            <script>
+                var CurrentYear = new Date().getFullYear()
+                document.write(CurrentYear)
+            </script>
+</a>
+</div>
+</footer>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.2.3/mermaid.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js"></script>
+<script src="/PLNET/resource/highlight/highlight.pack.js"></script>
+<script src="/PLNET/client/src/app/main.js" type="module"></script>
+</body>
+</html>

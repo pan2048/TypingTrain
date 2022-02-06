@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<!-- Required meta tags -->
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="/PLNET/resource/img/logo.png" rel="shortcut icon"/>
+<!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet"/>
+<link href="/PLNET/resource/highlight/styles/vs2015.css" rel="stylesheet"/>
+<link href="/PLNET/resource/custom.css" rel="stylesheet"/>
+<title></title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-109032729-5"></script>
+<script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-109032729-5');
+    </script>
+</head>
+<body>
+<header>
+<nav class="navbar bg-light bg-light">
+<a class="navbar-brand" href="/PLNET/index.html">
+<img height="28" src="/PLNET/resource/img/logo.png"/>
+      PLNET
+    </a>
+
+
+</nav>
+</header>
+<main><div class="container-fluid" id="dict_container">
+<h1><span class="badge badge-primary">collection in Kotlin</span></h1>
+<div class="container-fluid">
+<pre id="word_content" style="white-space: pre-wrap;">The Kotlin Standard Library provides a comprehensive set of tools for managing collections – groups of a variable number of items (possibly zero) that share significance to the problem being solved and are operated upon commonly.
+Collections are a common concept for most programming languages, so if you're familiar with, for example, Java or Python collections, you can skip this introduction and proceed to the detailed sections.
+A collection usually contains a number of objects (this number may also be zero) of the same type. Objects in a collection are called elements or items. For example, all the students in a department form a collection that can be used to calculate their average age. The following collection types are relevant for Kotlin:
+* List is an ordered collection with access to elements by indices – integer numbers that reflect their position. Elements can occur more than once in a list. An example of a list is a sentence: it's a group of words, their order is important, and they can repeat.
+* Set is a collection of unique elements. It reflects the mathematical abstraction of set: a group of objects without repetitions. Generally, the order of set elements has no significance. For example, an alphabet is a set of letters.
+* Map (or dictionary) is a set of key-value pairs. Keys are unique, and each of them maps to exactly one value. The values can be duplicates. Maps are useful for storing logical connections between objects, for example, an employee's ID and their position.
+
+Kotlin lets you manipulate collections independently of the exact type of objects stored in them. In other words, you add a String to a list of Strings the same way as you would do with Ints or a user-defined class. So, the Kotlin Standard Library offers generic interfaces, classes, and functions for creating, populating, and managing collections of any type.
+The collection interfaces and related functions are located in the kotlin.collections package. Let's get an overview of its contents.
+The Kotlin Standard Library provides implementations for basic collection types: sets, lists, and maps. A pair of interfaces represent each collection type:
+* A read-only interface that provides operations for accessing collection elements.
+* A mutable interface that extends the corresponding read-only interface with write operations: adding, removing, and updating its elements.
+
+Note that altering a mutable collection doesn't require it to be a var: write operations modify the same mutable collection object, so the reference doesn't change. Although, if you try to reassign a val collection, you'll get a compilation error.
+```
+val numbers = mutableListOf("one", "two", "three", "four")
+
+numbers.add("five")   // this is OK    
+//numbers = mutableListOf("six", "seven")      // compilation error
+```
+The read-only collection types are covariant. This means that, if a Rectangle class inherits from Shape, you can use a List&lt;Rectangle&gt; anywhere the List&lt;Shape&gt; is required. In other words, the collection types have the same subtyping relationship as the element types. Maps are covariant on the value type, but not on the key type.
+In turn, mutable collections aren't covariant; otherwise, this would lead to runtime failures. If MutableList&lt;Rectangle&gt; was a subtype of MutableList&lt;Shape&gt;, you could insert other Shape inheritors (for example, Circle) into it, thus violating its Rectangle type argument.
+Collection&lt;T&gt; is the root of the collection hierarchy. This interface represents the common behavior of a read-only collection: retrieving size, checking item membership, and so on. Collection inherits from the Iterable&lt;T&gt; interface that defines the operations for iterating elements. You can use Collection as a parameter of a function that applies to different collection types. For more specific cases, use the Collection's inheritors: List and Set.
+```
+fun printAll(strings: Collection&lt;String&gt;) {
+        for(s in strings) print("$s ")
+        println()
+    }
+
+fun main() {
+    val stringList = listOf("one", "two", "one")
+    printAll(stringList)
+   
+    val stringSet = setOf("one", "two", "three")
+    printAll(stringSet)
+}
+```
+MutableCollection is a Collection with write operations, such as add and remove.
+```
+fun List&lt;String&gt;.getShortWordsTo(shortWords: MutableList&lt;String&gt;, maxLength: Int) {
+    this.filterTo(shortWords) { it.length &lt;= maxLength }
+    // throwing away the articles
+    val articles = setOf("a", "A", "an", "An", "the", "The")
+    shortWords -= articles
+}
+
+fun main() {
+    val words = "A long time ago in a galaxy far far away".split(" ")
+    val shortWords = mutableListOf&lt;String&gt;()
+
+    words.getShortWordsTo(shortWords, 3)
+    println(shortWords)
+}
+```</pre>
+</div>
+<div class="btn-group-vertical text-left">
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/PLNET/dictionary/Collection.html">Collection</a>, <a href="/PLNET/dictionary/Data_type_in_kotlin.html">Data type in kotlin</a></button>
+</div><br/>
+<div class="container-fluid"> <a class="btn btn-primary" href="/PLNET/index.html" role="button">Home</a> </div></div></main>
+<footer>
+<script>
+        document.getElementById("year").innerHTML = new Date().getFullYear();
+    </script>
+<div class="text-center text-primary">
+<a href="/PLNET/index.html">plnet.com 2018 - 
+            <script>
+                var CurrentYear = new Date().getFullYear()
+                document.write(CurrentYear)
+            </script>
+</a>
+</div>
+</footer>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.2.3/mermaid.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js"></script>
+<script src="/PLNET/resource/highlight/highlight.pack.js"></script>
+<script src="/PLNET/client/src/app/main.js" type="module"></script>
+</body>
+</html>

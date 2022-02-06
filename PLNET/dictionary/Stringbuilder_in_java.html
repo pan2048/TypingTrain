@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<!-- Required meta tags -->
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="/PLNET/resource/img/logo.png" rel="shortcut icon"/>
+<!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet"/>
+<link href="/PLNET/resource/highlight/styles/vs2015.css" rel="stylesheet"/>
+<link href="/PLNET/resource/custom.css" rel="stylesheet"/>
+<title></title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-109032729-5"></script>
+<script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-109032729-5');
+    </script>
+</head>
+<body>
+<header>
+<nav class="navbar bg-light bg-light">
+<a class="navbar-brand" href="/PLNET/index.html">
+<img height="28" src="/PLNET/resource/img/logo.png"/>
+      PLNET
+    </a>
+
+
+</nav>
+</header>
+<main><div class="container-fluid" id="dict_container">
+<h1><span class="badge badge-primary">StringBuilder in Java</span></h1>
+<div class="container-fluid">
+<pre id="word_content" style="white-space: pre-wrap;">The StringBuilder is a mutable sequence of characters. 
+```
+public class Main {
+    public static void main(String[] args) {
+        StringBuilder a = new StringBuilder("abc");
+        StringBuilder b = a.append("de");
+        b = b.append("f").append("g");
+        System.out.println("a=" + a); //a=abcdefg
+        System.out.println("b=" + b); //b=abcdefg
+    }
+}
+```
+The function of StringBuilder is similar to the StringBuffer class. However the StringBuilder class differs from the StringBuffer class on the basis of synchronization. The StringBuilder class provides no guarantee of synchronization whereas the StringBuffer class does. Instances of StringBuilder are not safe for use by multiple threads. If such synchronization is required then it is recommended that StringBuffer be used.
+Some stringBuild method,
+Name | Meaning
+----- | -----
+StringBuilder append(String str) | Adds the parameter to the StringBuilder and returns a ref-erence to the current StringBuilder.
+char charAt(int index) | Returns the character at the specified index.
+StringBuilder delete(int start, int end) | Removes characters from the sequence and returns a reference to the current StringBuilder
+StringBuilder deleteCharAt(int index) | Delete only one character.
+int length() | Returns the length of this string.
+int indexOf(char ch)&lt;br&gt;int indexOf(char ch, index fromIndex)&lt;br&gt;int indexOf(String str)&lt;br&gt;int indexOf(String str, index fromIndex) | Returns the index within this string of the first occurrence of the specified substring.
+StringBuilder insert(int offset, String str) | Adds characters to the StringBuilder at the requested index and returns a reference to the current StringBuilder. 
+StringBuilder reverse() | Reverses the characters in the sequences and returns a reference to the current StringBuilder. 
+String substring(int beginIndex)&lt;br&gt;String substring(int beginIndex, int endIndex)  | Returns a new string that is a 
+String toString() | Converts a StringBuilder into a String.
+
+
+```
+public class Main {
+    public static void main(String[] args) {
+        StringBuilder sb1 = new StringBuilder(10);
+        System.out.println(sb1.capacity());  // 10
+        StringBuilder sb2 = new StringBuilder("abc"); 
+        System.out.println(sb2.capacity()); // 19 = 16 + 3
+        StringBuilder sb3 = new StringBuilder();
+        System.out.println(sb3.capacity()); //16
+    }
+}
+```</pre>
+</div>
+<div class="btn-group-vertical text-left">
+<button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/PLNET/dictionary/String_in_java.html">String in java</a></button>
+</div><br/>
+<div class="container-fluid"> <a class="btn btn-primary" href="/PLNET/index.html" role="button">Home</a> </div></div></main>
+<footer>
+<script>
+        document.getElementById("year").innerHTML = new Date().getFullYear();
+    </script>
+<div class="text-center text-primary">
+<a href="/PLNET/index.html">plnet.com 2018 - 
+            <script>
+                var CurrentYear = new Date().getFullYear()
+                document.write(CurrentYear)
+            </script>
+</a>
+</div>
+</footer>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.2.3/mermaid.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js"></script>
+<script src="/PLNET/resource/highlight/highlight.pack.js"></script>
+<script src="/PLNET/client/src/app/main.js" type="module"></script>
+</body>
+</html>
