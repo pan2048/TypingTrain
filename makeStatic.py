@@ -8,12 +8,16 @@ def download():
 	os.system("wget -q  -nH -r localhost -P PLNET")
 	print("website downloaded.")
 
+            
 def process():
 	if os.path.isdir('PLNET/action'):
 		shutil.rmtree('PLNET/action')
 	if os.path.isfile('PLNET/login'):
 		os.remove('PLNET/login')
-		
+	if os.path.isdir('../website/code/client'):
+		shutil.rmtree('PLNET/client')
+		shutil.copytree('../website/code/client', 'PLNET/client')
+					
 	results = [y for x in os.walk('PLNET/dictionary') for y in glob(os.path.join(x[0], '*'))]
 	for result in results:
 		if not os.path.isdir(result):
@@ -74,7 +78,7 @@ def changeMore(fileName):
 	textFile.write(str(soup))
 	textFile.close()
 
-download()
+#download()
 process()
 changeLink("PLNET/index.html")
 changeMore("PLNET/index.html")

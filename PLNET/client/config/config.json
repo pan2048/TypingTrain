@@ -1,0 +1,7 @@
+{
+  "language": "en",
+  "log": {
+  	"server": true,
+	"level": "info"
+  }
+}
