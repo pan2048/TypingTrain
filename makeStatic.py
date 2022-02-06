@@ -73,12 +73,12 @@ def changeMore(fileName):
 				if a['href'].startswith("/PLNET/action"):
 					a.parent.parent.decompose()	 
 		except TypeError:
-			print("")
+			pass
 	textFile = open(fileName, "w")
 	textFile.write(str(soup))
 	textFile.close()
 
-#download()
+download()
 process()
 changeLink("PLNET/index.html")
 changeMore("PLNET/index.html")
