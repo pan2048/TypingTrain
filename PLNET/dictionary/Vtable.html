@@ -33,41 +33,16 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">virtual destructor</span></h1>
+<h1><span class="badge badge-primary">vtable</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">A virtual destructor is represented by a tilde(~) after the virtual keyword.
-Virtual destructors are used for the same purpose as virtual functions. When you remove an object of subclass, which is referenced by a parent class pointer, only destructor of base class will get executed. But if the destructor is defined using virtual keyword, both the destructors [ of parent and sub class ] will get invoked.
-We can have virtual destructors but not constructors. 
-```
-#include &lt;iostream&gt;
-using namespace std;
-
-class A {
-public:    
-    virtual ~A() { cout &lt;&lt; "A" &lt;&lt; endl; }
-};
-class B : virtual public A {
-public:    
-    ~B() { cout &lt;&lt; "B" &lt;&lt; endl; }
-};
-class C : virtual public A {
-public:    
-    ~C() { cout &lt;&lt; "C" &lt;&lt; endl; }
-};
-class D : public B, C {
-public:
-    ~ D() { cout &lt;&lt; "D" &lt;&lt; endl; }
-};
-
-int main() {
-    A* d = new D();
-    delete d;
-    return 0;
-}
-```</pre>
+<pre id="word_content" style="white-space: pre-wrap;">Virtual functions are implemented using a table of function pointers, called the vtable. 
+There is one entry in the table per virtual function in the class. This table is created by the constructor of the class. When a derived class is constructed, its base class is constructed first which creates
+the vtable. If the derived class overrides any of the base classes virtual functions, those entries in the vtable are overwritten by the derived class constructor. This is why you should never call
+virtual functions from a constructor: because the vtable entries for the object may not have been set up by the derived class constructor yet, so you might end up calling base class
+implementations of those virtual functions</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/PLNET/dictionary/Destructor.html">Destructor</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/PLNET/dictionary/Virtual_function.html">Virtual function</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/PLNET/index.html" role="button">Home</a> </div></div></main>
 <footer>

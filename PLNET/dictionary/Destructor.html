@@ -35,7 +35,10 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">destructor</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">A constructor is automatically called when an object is first created. Similarly when an object is destroyed a function called destructor automatically gets called. A destructor has the same name as the constructor (which is the same as the class name) but is preceded by a tilde.</pre>
+<pre id="word_content" style="white-space: pre-wrap;">In C++, when an object is destroyed a function called destructor automatically gets called. A destructor has the same name as the constructor (which is the same as the class name) but is preceded by a tilde. 
+You can have only one destructor for a class. It never takes any parameters, and it never returns anything. You can't pass parameters to the destructor anyway, since you never explicitly call a destructor (well, almost never).
+Remember that there is no concept of destructor in Java. In place of the destructor, Java provides the garbage collector that works the same as the destructor. The garbage collector is a program (thread) that runs on the JVM.
+</pre>
 </div>
 <div class="btn-group-vertical text-left">
 <button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/PLNET/dictionary/Destructor_in_c++.html">Destructor in c++</a>, <a href="/PLNET/dictionary/Virtual_destructor.html">Virtual destructor</a></button>
