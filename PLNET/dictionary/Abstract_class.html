@@ -35,10 +35,32 @@
 <main><div class="container-fluid" id="dict_container">
 <h1><span class="badge badge-primary">abstract class</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">An abstract class is a class that is declared abstract — it may or may not include abstract methods. Abstract classes cannot be instantiated, but they can be subclassed. An abstract class may have static fields and static methods.</pre>
+<pre id="word_content" style="white-space: pre-wrap;">An abstract class is a class that is declared abstract — it may or may not include abstract methods. Abstract classes cannot be instantiated, but they can be subclassed. An abstract class may have static fields and static methods.
+```
+#include &lt;iostream&gt;
+using namespace std;
+
+class Base {
+public:
+    virtual bool Get(int i) = 0;
+};
+
+class Derived1 : public Base {
+public:
+    bool Get(int i) { return i;}
+};
+
+int main()
+{
+    int k=5;
+    Base * base = new Derived1();
+    cout&lt;&lt;"temp is "&lt;&lt;base-&gt;Get(k)&lt;&lt;endl;
+    return 0;
+}
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/PLNET/dictionary/Class.html">Class</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/PLNET/dictionary/Abstract_class_in_java.html">Abstract class in java</a>, <a href="/PLNET/dictionary/Abstract_class_in_kotlin.html">Abstract class in kotlin</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/PLNET/dictionary/Class.html">Class</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/PLNET/dictionary/Abstract_class_in_java.html">Abstract class in java</a>, <a href="/PLNET/dictionary/Abstract_class_in_kotlin.html">Abstract class in kotlin</a></button><button class="btn btn-light" type="button"><b>Subcategory: </b><a href="/PLNET/dictionary/Abstract_method.html">Abstract method</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/PLNET/index.html" role="button">Home</a> </div></div></main>
 <footer>

@@ -33,12 +33,40 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">singleton</span></h1>
+<h1><span class="badge badge-primary">bit field in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">The singleton pattern restricts the instantiation of a class to a single object. It is useful in cases wherein you only need a single object to contain a global state.</pre>
+<pre id="word_content" style="white-space: pre-wrap;">In C++, A class can define a (nonstatic) data member as a bit-field. We indicate that a member is a bit-field by following the member name with a colon and a constant expression specifying the number of bits. A bit-field shall not be a static member. 
+Ordinarily it is best to make a bit-field an unsigned type. The behavior of bit-fields stored in a signed type is implementation defined.
+```
+#include &lt;iostream&gt;
+using namespace std;
+
+class File {
+public:    
+    unsigned int mode:2;
+};
+
+int main()
+{
+    enum modes { READ = 01, WRITE = 02, EXECUTE = 03 };
+    File file;
+    
+    cout &lt;&lt; file.mode &lt;&lt; ",";
+    file.mode |= READ;
+    cout &lt;&lt; file.mode &lt;&lt; ",";
+    file.mode |= WRITE;
+    cout &lt;&lt; file.mode &lt;&lt; endl;
+    return 0;
+}
+
+// output 0, 1, 3
+```
+
+
+</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/PLNET/dictionary/Design_pattern.html">Design pattern</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/PLNET/dictionary/Singleton_in_c++.html">Singleton in c++</a>, <a href="/PLNET/dictionary/Singleton_in_java.html">Singleton in java</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/PLNET/dictionary/Bit_field.html">Bit field</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/PLNET/index.html" role="button">Home</a> </div></div></main>
 <footer>

@@ -33,12 +33,30 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">singleton</span></h1>
+<h1><span class="badge badge-primary">union in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">The singleton pattern restricts the instantiation of a class to a single object. It is useful in cases wherein you only need a single object to contain a global state.</pre>
+<pre id="word_content" style="white-space: pre-wrap;">In C++. A union is defined starting with the keyword union, followed by an (optional) name for the union and a set of member declarations enclosed in curly braces. 
+```
+#include &lt;iostream&gt;
+using namespace std;
+
+union Token {
+    char cval;
+    int ival;
+    double dval;
+};
+
+int main()
+{
+    Token t;
+    t.cval = 1;
+    cout &lt;&lt; t.ival &lt;&lt; endl;
+}
+```
+</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/PLNET/dictionary/Design_pattern.html">Design pattern</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/PLNET/dictionary/Singleton_in_c++.html">Singleton in c++</a>, <a href="/PLNET/dictionary/Singleton_in_java.html">Singleton in java</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/PLNET/dictionary/Union.html">Union</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/PLNET/index.html" role="button">Home</a> </div></div></main>
 <footer>

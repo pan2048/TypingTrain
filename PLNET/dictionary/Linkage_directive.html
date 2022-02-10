@@ -33,12 +33,32 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">singleton</span></h1>
+<h1><span class="badge badge-primary">linkage directive</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">The singleton pattern restricts the instantiation of a class to a single object. It is useful in cases wherein you only need a single object to contain a global state.</pre>
+<pre id="word_content" style="white-space: pre-wrap;">C++ uses linkage directives to indicate the language used for any non-C++ function.
+A linkage directive can have one of two forms: single or compound. Linkage directives may not appear inside a class or function definition. The same linkage directive must appear on every declaration of a function.
+As an example, the following declarations shows how some of the C functions in the cstring header might be declared:
+```
+#include &lt;iostream&gt;
+using namespace std;
+
+extern "C" size_t strlen(const char *);
+
+extern "C" {
+    char *strcat(char*, const char*);
+}
+
+int main()
+{
+    string s1 = "Hello,", s2=" World!";
+    cout &lt;&lt; strlen(s1.c_str()) &lt;&lt; endl;
+    cout &lt;&lt; strcat((char*)s1.c_str(), s2.c_str()) &lt;&lt; endl;
+    return 0;  
+}
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/PLNET/dictionary/Design_pattern.html">Design pattern</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/PLNET/dictionary/Singleton_in_c++.html">Singleton in c++</a>, <a href="/PLNET/dictionary/Singleton_in_java.html">Singleton in java</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/PLNET/dictionary/C++.html">C++</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/PLNET/index.html" role="button">Home</a> </div></div></main>
 <footer>

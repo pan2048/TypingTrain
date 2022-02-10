@@ -33,12 +33,53 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">singleton</span></h1>
+<h1><span class="badge badge-primary">virtual method in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">The singleton pattern restricts the instantiation of a class to a single object. It is useful in cases wherein you only need a single object to contain a global state.</pre>
+<pre id="word_content" style="white-space: pre-wrap;">You can make a class virtual if it is a base class that has been passed to more than one derived class, as might happen with multiple inheritance.
+```
+#include &lt;iostream&gt;
+using namespace std;
+
+class Machine {
+public:
+    virtual void run() {}
+    class Parts {
+    public:
+        virtual int get_wheels() = 0;
+        virtual string get_fule_type() = 0;
+    };
+};
+
+class Car: public Machine {
+public:
+    void run() {
+        cout &lt;&lt; "The car is running." &lt;&lt; endl;
+    }
+    class Parts: public Machine::Parts {
+    public:
+        int get_wheels() override {
+            cout &lt;&lt; "A car has 4 wheels." &lt;&lt; endl;
+            return 4;
+        }
+        string get_fule_type() override {
+            cout &lt;&lt; "A car uses gasolinle for fuel." &lt;&lt; endl;
+            return "gasoline";
+        }
+    };
+    
+};
+int main() {
+    Machine* machine = new Car();
+    Machine::Parts* parts = new Car::Parts();
+    machine-&gt;run();
+    parts-&gt;get_wheels();
+    parts-&gt;get_fule_type();
+    return 0;    
+}
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/PLNET/dictionary/Design_pattern.html">Design pattern</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/PLNET/dictionary/Singleton_in_c++.html">Singleton in c++</a>, <a href="/PLNET/dictionary/Singleton_in_java.html">Singleton in java</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/PLNET/dictionary/Class.html">Class</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/PLNET/index.html" role="button">Home</a> </div></div></main>
 <footer>

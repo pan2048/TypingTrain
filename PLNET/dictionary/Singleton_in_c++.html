@@ -33,12 +33,30 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">singleton</span></h1>
+<h1><span class="badge badge-primary">singleton in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">The singleton pattern restricts the instantiation of a class to a single object. It is useful in cases wherein you only need a single object to contain a global state.</pre>
+<pre id="word_content" style="white-space: pre-wrap;">The Meyers Singleton in C++11 is automatically thread-safe. That is guaranteed by the standard: Static variables with block scope. The elegance of this implementation is that the singleton object instance is a static variable with a block scope. Therefore, instance will exactly be initialized, when the static method getInstance will be executed the first time. 
+```
+#include &lt;iostream&gt;
+using namespace std;
+
+class Singleton {
+public:
+  static Singleton&amp; getInstance(){
+    static Singleton instance;
+    return instance;
+  }
+};
+
+int main()
+{
+    Singleton s = Singleton::getInstance();
+    return 0;
+}
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/PLNET/dictionary/Design_pattern.html">Design pattern</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/PLNET/dictionary/Singleton_in_c++.html">Singleton in c++</a>, <a href="/PLNET/dictionary/Singleton_in_java.html">Singleton in java</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/PLNET/dictionary/Singleton.html">Singleton</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/PLNET/index.html" role="button">Home</a> </div></div></main>
 <footer>

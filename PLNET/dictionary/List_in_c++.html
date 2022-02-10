@@ -33,12 +33,44 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">singleton</span></h1>
+<h1><span class="badge badge-primary">list in C++</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">The singleton pattern restricts the instantiation of a class to a single object. It is useful in cases wherein you only need a single object to contain a global state.</pre>
+<pre id="word_content" style="white-space: pre-wrap;">```
+#include &lt;iostream&gt;
+#include &lt;list&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+
+int main ()
+{
+    list&lt;int&gt; l;
+    
+    l.push_back(1);
+    l.push_front(2);
+    auto it = l.begin();
+    advance(it, 1);
+    l.insert(it, 3);
+    
+    it = find(l.begin(),l.end(), 1);
+    *it = 10;
+    
+    
+    it = l.begin();
+    advance(it, 1);
+    l.erase(it);
+      
+    for(auto it=l.begin(); it!=l.end(); it++) {
+        cout&lt;&lt;*it&lt;&lt;",";
+    }
+    cout&lt;&lt;endl;
+
+  return 0;
+}
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/PLNET/dictionary/Design_pattern.html">Design pattern</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/PLNET/dictionary/Singleton_in_c++.html">Singleton in c++</a>, <a href="/PLNET/dictionary/Singleton_in_java.html">Singleton in java</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/PLNET/dictionary/Composite_data_type_in_c++.html">Composite data type in c++</a>, <a href="/PLNET/dictionary/List.html">List</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/PLNET/index.html" role="button">Home</a> </div></div></main>
 <footer>
