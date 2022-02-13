@@ -33,12 +33,17 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">algorithm</span></h1>
+<h1><span class="badge badge-primary">Dynamic programming with bit masking</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">An algorithm is a sequence of instructions to solve a problem.</pre>
+<pre id="word_content" style="white-space: pre-wrap;">First thing to make sure before using bitmasks for solving a problem is that it must be having small constraints, as solutions which use bitmasking generally take up exponential time and memory.
+Let’s first try to understand what Bitmask means. Mask in Bitmask means hiding something. Bitmask is nothing but a binary number that represents something. Let’s take an example. Consider the set A={1,2,3,4,5}. We can represent any subset of A using a bitmask of length 5, with an assumption that if ith(0≤i≤4) bit is set then it means ith element is present in subset. So the bitmask 01010 represents the subset {2,4}
+Now the benefit of using bitmask. We can set the ith bit, unset the ith bit, check if ith bit is set in just one step each. Let’s say the bitmask, b=01010.
+* Set the ith bit: b|(1&lt;&lt;i). Let i=0, so,(1&lt;&lt;i)=0000101010|00001=01011So now the subset includes the 0th element also, so the subset is {1,2,4}.
+* Unset the ith bit: b&amp;!(1&lt;&lt;i). Let i=1, so,(1&lt;&lt;i)=00010!(1&lt;&lt;i)=1110101010&amp;11101=01000Now the subset does not include the 1st element, so the subset is {4}.
+* Check if ith bit is set: b&amp;(1&lt;&lt;i), doing this operation, if ith bit is set, we get a non zero integer otherwise, we get zero. Let i=3(1&lt;&lt;i)=0100001010&amp;01000=01000Clearly the result is non-zero, so that means 3rd element is present in the subset.</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/PLNET/dictionary/Computer_science.html">Computer science</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/PLNET/dictionary/Algorithm_about_bst.html">Algorithm about bst</a>, <a href="/PLNET/dictionary/Dynamic_programming.html">Dynamic programming</a>, <a href="/PLNET/dictionary/Sorting_algorithm.html">Sorting algorithm</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/PLNET/dictionary/Dynamic_programming.html">Dynamic programming</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/PLNET/dictionary/Maximum_and_sum_of_array.html">Maximum and sum of array</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/PLNET/index.html" role="button">Home</a> </div></div></main>
 <footer>

@@ -33,12 +33,63 @@
 </nav>
 </header>
 <main><div class="container-fluid" id="dict_container">
-<h1><span class="badge badge-primary">algorithm</span></h1>
+<h1><span class="badge badge-primary">maximum AND sum of array</span></h1>
 <div class="container-fluid">
-<pre id="word_content" style="white-space: pre-wrap;">An algorithm is a sequence of instructions to solve a problem.</pre>
+<pre id="word_content" style="white-space: pre-wrap;">You are given an integer array nums of length n and an integer numSlots such that 2 * numSlots &gt;= n. There are numSlots slots numbered from 1 to numSlots.
+You have to place all n integers into the slots such that each slot contains at most two numbers. The AND sum of a given placement is the sum of the bitwise AND of every number with its respective slot number.
+For example, the AND sum of placing the numbers [1, 3] into slot 1 and [4, 6] into slot 2 is equal to (1 AND 1) + (3 AND 1) + (4 AND 2) + (6 AND 2) = 1 + 1 + 0 + 2 = 4.
+Return the maximum possible AND sum of nums given numSlots slots.
+* Example 1:
+Input: nums = [1,2,3,4,5,6], numSlots = 3
+Output: 9
+Explanation: One possible placement is [1, 4] into slot 1, [2, 6] into slot 2, and [3, 5] into slot 3. 
+This gives the maximum AND sum of (1 AND 1) + (4 AND 1) + (2 AND 2) + (6 AND 2) + (3 AND 3) + (5 AND 3) = 1 + 0 + 2 + 2 + 3 + 1 = 9.
+* Example 2:
+Input: nums = [1,3,10,4,7,1], numSlots = 9
+Output: 24
+Explanation: One possible placement is [1, 1] into slot 1, [3] into slot 3, [4] into slot 4, [7] into slot 7, and [10] into slot 9.
+This gives the maximum AND sum of (1 AND 1) + (1 AND 1) + (3 AND 3) + (4 AND 4) + (7 AND 7) + (10 AND 9) = 1 + 1 + 3 + 4 + 7 + 8 = 24.
+Note that slots 2, 5, 6, and 8 are empty which is permitted.
+Constraints:
+n == nums.length
+1 &lt;= numSlots &lt;= 9
+1 &lt;= n &lt;= 2 * numSlots
+1 &lt;= nums[i] &lt;= 15
+
+```
+class Solution {
+public:
+    int hammingWeight(int n) {
+        int cnt=0;  
+        while(n&gt;0){ 
+            if((n&amp;1)&gt;0) 
+                ++cnt;
+            n=n&gt;&gt;1; 
+        }
+        return cnt;
+    }
+    
+    int maximumANDSum(vector&lt;int&gt;&amp; nums, int numSlots) {
+        nums.insert(nums.end(), 2*numSlots-nums.size(), 0);
+        
+        int L = nums.size();
+        int N = 1&lt;&lt;L;
+        vector&lt;int&gt; results(N);
+        for (int i = 1; i &lt; N; i++) {
+            int cnt = hammingWeight(i), slot = (cnt + 1) / 2; 
+            for (int j = 0; j &lt; L; j++) {
+                if (i &amp; (1&lt;&lt;j)) { 
+                    results[i] = max(results[i], results[i ^ (1&lt;&lt;j)] + (slot &amp; nums[j]));
+                }
+            }
+        }
+        return results[N-1];        
+    }
+};
+```</pre>
 </div>
 <div class="btn-group-vertical text-left">
-<button class="btn btn-light" type="button"><b>Supercategory: </b><a href="/PLNET/dictionary/Computer_science.html">Computer science</a></button><button class="btn btn-light" type="button"><b>Subconcept: </b><a href="/PLNET/dictionary/Algorithm_about_bst.html">Algorithm about bst</a>, <a href="/PLNET/dictionary/Dynamic_programming.html">Dynamic programming</a>, <a href="/PLNET/dictionary/Sorting_algorithm.html">Sorting algorithm</a></button>
+<button class="btn btn-light" type="button"><b>Superconcept: </b><a href="/PLNET/dictionary/Dynamic_programming_with_bit_masking.html">Dynamic programming with bit masking</a></button>
 </div><br/>
 <div class="container-fluid"> <a class="btn btn-primary" href="/PLNET/index.html" role="button">Home</a> </div></div></main>
 <footer>
